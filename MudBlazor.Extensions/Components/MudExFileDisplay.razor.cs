@@ -7,7 +7,12 @@ using Nextended.Blazor.Helper;
 using MudBlazor.Extensions.Services;
 using MudBlazor.Extensions.Components.ObjectEdit;
 using MudBlazor.Extensions.Core;
+using MudBlazor.Extensions.Helper;
 using MudBlazor.Extensions.Helper.Internal;
+using MudBlazor.Extensions.Options;
+using Nextended.Core.Extensions;
+using Nextended.Core.Helper;
+using MudBlazor.Interop;
 
 namespace MudBlazor.Extensions.Components;
 
@@ -18,7 +23,9 @@ public partial class MudExFileDisplay : IMudExFileDisplayInfos
 {
 
     #region private fields
-
+    
+    private (MudExDimension? Dimension, MudExPosition? Position)? _lastInfoDialogLocation;
+    private DynamicComponent _currentFileDisplay;
     private bool _internalCall;
     private bool _isNativeRendered;
     private string _id = Guid.NewGuid().ToString();
@@ -42,6 +49,12 @@ public partial class MudExFileDisplay : IMudExFileDisplayInfos
     /// </summary>
     //[Parameter, SafeCategory("Appearance")]
     public string StatusText { get; private set; }
+
+    /// <summary>
+    /// Specify types of IMudExFileDisplay that should be ignored
+    /// </summary>
+    [Parameter]
+    public Type[] IgnoredRenderControls { get; set; }
 
     /// <summary>
     /// How to handle the stream url
@@ -302,6 +315,9 @@ public partial class MudExFileDisplay : IMudExFileDisplayInfos
         var updateRequired = (parameters.TryGetValue<Stream>(nameof(ContentStream), out var stream) && ContentStream != stream)
                              || (parameters.TryGetValue<string>(nameof(Url), out var url) && Url != url);
 
+        if(updateRequired)
+            _componentForFile = default;
+
         await base.SetParametersAsync(parameters);
 
         if (!updateRequired)
@@ -321,12 +337,19 @@ public partial class MudExFileDisplay : IMudExFileDisplayInfos
     /// <inheritdoc/>
     protected override Task OnParametersSetAsync()
     {
-        _possibleRenderControls = GetServices<IMudExFileDisplay>().Where(c => c.GetType() != GetType() && c.CanHandleFile(this)).ToList();
-        if (ViewDependsOnContentType)
+        _possibleRenderControls = GetServices<IMudExFileDisplay>().Where(c => c.GetType() != GetType() && !Ignored(c) && c.CanHandleFile(this)).ToList();
+        if (ViewDependsOnContentType && _componentForFile == default)
             _componentForFile = GetComponentForFile(_possibleRenderControls.FirstOrDefault(c => c.StartsActive && !ForceNativeRender));
         if (!_internalOverwrite)
             renderInfos = GetRenderInfos();
         return base.OnParametersSetAsync();
+    }
+
+    private bool Ignored(IMudExFileDisplay mudExFileDisplay)
+    {
+        if(IgnoredRenderControls == null || IgnoredRenderControls.Length == 0)
+            return false;
+        return IgnoredRenderControls.Any(t => t.IsInstanceOfType(mudExFileDisplay));
     }
 
 
@@ -336,6 +359,7 @@ public partial class MudExFileDisplay : IMudExFileDisplayInfos
         if (type == null)
             return default;
         var parameters = ComponentRenderHelper.GetCompatibleParameters(this, type);
+        
         parameters.Add(nameof(IMudExFileDisplay.FileDisplayInfos), this);
 
         if (ParametersForSubControls != null)
@@ -527,9 +551,10 @@ public partial class MudExFileDisplay : IMudExFileDisplayInfos
         }
     }
 
-    private async Task ShowInfo()
+    private Task ShowInfo() => ShowInfo(false);
+
+    private async Task ShowInfo(bool showEmptyValues)
     {
-        var selfGenerated = FileInfo == null;
         Stream effectiveStream = ContentStream;
         string size = null;
 
@@ -549,22 +574,87 @@ public partial class MudExFileDisplay : IMudExFileDisplayInfos
             }
         }
 
-        var infoObject = FileInfo ?? new
+        var dict = new Dictionary<string, object>()
         {
-            File = FileName,
-            ContentType,
-            Url = effectiveStream is { Length: > 0 } ? null : Url,
-            Size = size
+            { "File", FileName }, 
+            { "ContentType", ContentType },
+            { "Url", effectiveStream is { Length: > 0 } ? null : Url }, 
+            { "Size", size }
         };
 
+        if (_currentFileDisplay is { Instance: IMudExFileDisplay fileDisplay })
+        {
+            try
+            {
+                var meta = await fileDisplay.FileMetaInformationAsync(this);
+                if (meta != null)
+                    dict.MergeWith(meta);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        if (showEmptyValues)
+        {
+            foreach (var o in dict.Where(o => o.Value == null))
+                dict[o.Key] = string.Empty;
+        }
+        else
+        {
+            dict = dict.Where(o => o.Value != null).ToDictionary(o => o.Key, o => o.Value);
+        }
+
+        var infoObject = FileInfo ?? ReflectionHelper.CreateTypeAndDeserialize(dict);
+        
         var options = DialogServiceExt.DefaultOptions();
         options.CloseButton = true;
+        options.Resizeable = true;
+        options.DragMode = MudDialogDragMode.Simple;
+        if (_lastInfoDialogLocation.HasValue)
+        {
+            options.CustomPosition = _lastInfoDialogLocation.Value.Position;
+            options.CustomSize = _lastInfoDialogLocation.Value.Dimension;
+            options.MaxWidth = MaxWidth.ExtraExtraLarge;
+            options.MaxHeight = MaxHeight.ExtraExtraLarge;
+        }
+
+        Get<IDialogEventService>()
+            .Subscribe<DialogDragEndEvent>(HandleDragged)
+            .Subscribe<DialogResizedEvent>(HandleResized);
+
         await Get<IDialogService>().ShowObject(infoObject, TryLocalize("Info"), Icons.Material.Filled.Info, options, meta =>
         {
-            if (selfGenerated)
-                meta.Properties().Where(p => p.Value == null).Ignore();
+            meta.AllProperties.WrapInMudItem(i => i.xs = 6);
+            meta.Property("Url").WrapInMudItem(i => i.xs = 12);
         });
+
+        Get<IDialogEventService>()
+            .Unsubscribe<DialogDragEndEvent>(HandleDragged)
+            .Unsubscribe<DialogResizedEvent>(HandleResized);
     }
+
+
+    private Task HandleDragged(DialogDragEndEvent arg)
+    {
+        return Store(arg.Rect);
+    }
+
+    private Task HandleResized(DialogResizedEvent arg)
+    {
+        return Store(arg.Rect);
+    }
+
+    private Task Store(BoundingClientRect argRect)
+    {
+        if (argRect is { Left: > 0, Top: > 0, Width: > 0, Height: > 0 })
+        {
+            _lastInfoDialogLocation = (argRect.ToDimension(CssUnit.Percentage), argRect.ToPosition(CssUnit.Percentage));
+        }
+        return Task.CompletedTask;
+    }
+
 
     /// <inheritdoc />
     public override async ValueTask DisposeAsync()

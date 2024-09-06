@@ -387,6 +387,14 @@ MudBlazor.Extensions is released under the MIT License. See the bundled LICENSE 
 Latest Changes: 
 <!-- CHANGELOG:START -->
 <!-- Copied from CHANGELOG.md on 2024-06-28 13:18:31 -->
+ - 2.0.4 > The [MudExImageViewer](https://www.mudex.org/image-view) Now allows custom toolbar content and custom content for the new floating toolbar for the selected area.
+ - 2.0.4 > The [MudExImageViewer](https://www.mudex.org/image-view) now has an option to allow a rubberband selection. The user can then open, download, print or directly switching the view to the selected area as an image.
+           Also an event is fired when the user selects an area where an blob url and the image bytes are provided in.
+ - 2.0.4 > All file viewers can now implement a method to return info like meta tags for the info dialog.
+ - 2.0.4 > New propertry in MudExFileDisplay "IgnoredRenderControls" here you can specify an arry of types to ignore as file renderer.
+ - 2.0.4 > Update MudBlazor to 7.6.0
+ - 2.0.3 > Update MudBlazor to 7.5.0
+ - 2.0.3 > Fix small bugs
  - 2.0.0 > Update MudBlazor to 7.0.0
  - 2.0.0 > **_Breaking:_** Rename: Many properties and behavoirs as MudBlazor does. Se migration gide from MudBlazor 6 to 7 [here](https://github.com/MudBlazor/MudBlazor/issues/8447)
  - 1.7.89 > Fix bug that uploadable file is not updated in MudExObjectEditDialog
