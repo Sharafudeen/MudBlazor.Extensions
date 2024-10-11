@@ -1,4 +1,8 @@
 ## Change Log    
+ - 2.0.6 > Add New Component `MudExFileDisplayOfficeLive` to support preview of any remote accessable office files in [MudExFileDisplay](https://www.mudex.org/file-display) and [MudExUploadEdit](https://www.mudex.org/upload-edit) . 
+ - 2.0.6 > Use [MudExAdditionalAdornment](https://www.mudex.org/additional-adornments) for Theme edit buttons in [MudExThemeEdit](https://www.mudex.org/theme-edit)
+ - 2.0.6 > Fix some style bugs
+ - 2.0.6 > **_Breaking:_** Signature of [IMudExFileDisplay](https://www.mudex.org/api/IMudExFileDisplay) `CanHandleFile` changed to an async method. This allows to handle async file checks. The method now returns a Task<bool> instead of a bool.
  - 2.0.5 > Update MudBlazor to 7.8.0
  - 2.0.4 > The [MudExImageViewer](https://www.mudex.org/image-view) Now allows custom toolbar content and custom content for the new floating toolbar for the selected area.
  - 2.0.4 > The [MudExImageViewer](https://www.mudex.org/image-view) now has an option to allow a rubberband selection. The user can then open, download, print or directly switching the view to the selected area as an image.
@@ -9,7 +13,7 @@
  - 2.0.3 > Update MudBlazor to 7.5.0
  - 2.0.3 > Fix small bugs
  - 2.0.0 > Update MudBlazor to 7.0.0
- - 2.0.0 > **_Breaking:_** Rename: Many properties and behavoirs as MudBlazor does. Se migration gide from MudBlazor 6 to 7 [here](https://github.com/MudBlazor/MudBlazor/issues/8447)
+ - 2.0.0 > **_Breaking:_** Rename: Many properties and behavoirs as MudBlazor does. Se migration guide from MudBlazor 6 to 7 [here](https://github.com/MudBlazor/MudBlazor/issues/8447)
  - 1.7.89 > Fix bug that uploadable file is not updated in MudExObjectEditDialog
  - 1.7.88 > Dialogs now supporting a can close event to allow canceling the close event [see sample](https://www.mudex.org/dialogs-closing-event)
  - 1.7.88 > Add new Components [MudExTreeView](https://www.mudex.org/demos/TreeView).
@@ -33,7 +37,7 @@
  - 1.7.84 > Update MudBlazor to 6.15.0
  - 1.7.84 > Fix hidden content sometimes in MudExFileDisplayDialog
  - 1.7.84 > Fix Bug that no input can selected in draggable dialogs without header
- - 1.7.84 > Register [MudExAudioPlayer](https://www.mudex.org/audio-player) as file viewer for audio files [see file sample](https://www.mudex.org/file-display?file=electro-psycho-ibiza-no-vocal-sample-edit-169343.mp3)
+ - 1.7.84 > Register [MudExAudioPlayer](https://www.mudex.org/audio-player) as file viewer for audio files [see file sample](https://www.mudex.org/file-display?file=4.Unified-Voice.mp3)
  - 1.7.83 > Register [MudExStructuredDataEditor](https://www.mudex.org/structured-data-edit) as file viewer for json, yml and xml files [see file sample](https://www.mudex.org/file-display?file=weather.json)
  - 1.7.83 > Add viewer for font files for MudExFileDisplay [see file sample](https://www.mudex.org/file-display?file=SweetieBubbleGum-Regular.ttf)
  - 1.7.83 > Add support for tiff images in MudExFileDisplay [see file sample](https://www.mudex.org/file-display?file=Header.tiff)
@@ -114,7 +118,7 @@
  - 1.7.64 > Remove need for `jsRuntime.InitializeMudBlazorExtensionsAsync()`
  - 1.7.63 > Use MudMarkdown as IMudExFileDisplay to support markdown files in [MudExFileDisplay](https://www.mudex.org/file-display)
  - 1.7.63 > Add new option to allow copy url to clipboard in [MudExFileDisplay](https://www.mudex.org/file-display)
- - 1.7.63 > Fix bug in [MudExThemeEdit](https://www.mudex.org/theme-ed  it) where component wasnt loaded if its rendered in a dialog.
+ - 1.7.63 > Fix bug in [MudExThemeEdit](https://www.mudex.org/theme-edit) where component wasnt loaded if its rendered in a dialog.
  - 1.7.62 > Update all nuget packages to latest versions. Now using MudBlazor 6.7.0
  - 1.7.61 > **_Breaking:_** Rename: Move namespace for Css enums like CssUnit, BorderStyle etc from MudBlazor.Extensions.Core to MudBlazor.Extensions.Core.Css
  - 1.7.61 > new Component [MudExIconPicker](https://www.mudex.org/mud-ex-icon-picker) to select icons. Used in [API]((https://www.mudex.org/api)) overview and in ComponentGrid as MudExObjectedit config.
