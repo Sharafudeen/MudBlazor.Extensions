@@ -4,6 +4,7 @@ using MudBlazor.Extensions.Core.Css;
 using MudBlazor.Extensions.Core.Enums;
 using MudBlazor.Extensions.Helper;
 using Nextended.Core.Types;
+using YamlDotNet.Core.Tokens;
 
 namespace MudBlazor.Extensions.Components;
 
@@ -59,5 +60,13 @@ public partial class MudExTreeViewDefault<T>
     }
 
 
+    private IReadOnlyCollection<TreeViewItemContext<T>> GetChildren(TreeViewItemContext<T> context)
+    {
+        if (context.NeedsLoadChildren && (context.Value is IAsyncHierarchical<T> asyncHierarchical))
+        {
+            return asyncHierarchical.GetLoadingIndicatorItems().Select(i => CreateContext(i, "")).ToHashSet();
+        }
+        return context.Value?.GetLoadedChildren()?.Select(i => CreateContext(i, "")).ToHashSet();
+    }
 }
 

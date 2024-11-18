@@ -1,0 +1,144 @@
+﻿@using System.Globalization
+@using AuralizeBlazor
+@using AuralizeBlazor.Options
+@using MudBlazor.Extensions.Core
+@using MudBlazor.Extensions.Core.W3C
+@inherits MudExBaseComponent<MudExCaptureOptionsEdit>
+
+
+<div class="@Class" style="@GetStyleStr()">
+    @if (Value != null)
+    {
+        <MudExSplitPanel SplitterSize="1" UpdateSizesInPercentage="true" Splittable="false" ColumnLayout="true" Style="margin-bottom: 50px;">
+            <Left>
+                <MudStack StretchItems="StretchItems.End" Style="width: 60%">
+                    <MudExGroupBox Text="@TryLocalize("Preview")">
+                        <MudPaper Class="ma-3 pa-3" Elevation="3">
+                            <MudGrid Spacing="0" Justify="Justify.Center">
+                                @if (_screenTrack != null)
+                                {
+                                    <MudFab Style="@StopPreviewButtonStyle()" Color="Color.Error" OnClick="@StopPreviewScreenTrack" StartIcon="@Icons.Material.Filled.Close" Size="Size.Small" />
+                                }
+
+                                <MudPaper @onmousemove="OnDrag" @onmouseup="EndDrag" Style="@GetPreviewContainerStyle()">
+                                    <div @onclick="SelectScreenIf" style="@GetMainCapturePreviewStyle()">
+                                        <video style="height: 100%; width: 100%" @ref="_previewScreen"></video>
+                                    </div>
+                                    <div @ref="_overlayContainer"
+                                         @onmouseup="@DetachResize"
+                                         @onmousedown="@AttachResize"
+                                         class="@GetOverlayClass()"
+                                         style="@GetOverlayPreviewStyle()">
+                                        <video @onmousedown="StartDrag"
+                                               @onmouseup="EndDrag" style="height: 100%; width: 100%" @ref="_previewCamera"></video>
+                                    </div>
+                                </MudPaper>
+                            </MudGrid>
+
+                            
+                            <MudExEnumSelect Style="@OverlayOptionsStyle()" Class="ml-8 mr-8" Clearable="false" Variant="Variant.Outlined" @bind-Value="Value.OverlayPosition" Label="@TryLocalize("Overlay")">
+                                <MudExAdditionalAdornment Position="MoveContentPosition.AfterBegin">
+                                    <MudExIconButton ToolTip="@TryLocalize("Switch overlay source")" OnClick="@ToogleOverlaySource" Size="Size.Small" Icon="@Icons.Material.Filled.Cameraswitch"></MudExIconButton>
+                                </MudExAdditionalAdornment>
+                            </MudExEnumSelect>
+
+
+                        </MudPaper>
+                    </MudExGroupBox>
+                    <MudExGroupBox Text="@TryLocalize("Capture Screen")" Class="pa-3">
+
+                        <MudSwitch Style="margin: 7px;" Color="Color.Primary" UncheckedColor="Color.Default" T="bool" ValueChanged="@CaptureScreenChanged" Value="@_captureScreen" Label="@TryLocalize("Capture Screen")" />
+
+                        @if (_captureScreen)
+                        {
+                            <MudFab Class="mb-3" OnClick="@SelectScreen" StartIcon="@Icons.Material.Filled.ScreenShare" Label="@TryLocalize("Select screen")" />
+                            <MudText @onclick="@(SelectScreen)" Typo="Typo.body2">@TryLocalize("Click here to choose a screen to capture. If not selected, you will be prompted when starting the recording.")</MudText>
+                            <MudText Typo="Typo.body2" Color="Color.Warning" Style="font-size: 0.875em;">
+                                @TryLocalize("Note: Media options can't changed after a screen is selected")
+                            </MudText>
+
+
+                            <MudGrid Class="mt-6" Justify="Justify.FlexEnd">
+                                <MudFab Disabled="@(_screenTrack != null)" StartIcon="@Icons.Material.Filled.CameraAlt" OnClick="@ChangeMediaOptions" Label="@TryLocalize("Change media options")" />
+                            </MudGrid>
+                        }
+
+                    </MudExGroupBox>
+                </MudStack>
+            </Left>
+            <Right>
+                <MudStack StretchItems="StretchItems.End" Style="width: 40%">
+                    <MudExGroupBox Text="@TryLocalize("Additional Video")" Class="pa-3">
+                        <MudAutocomplete T="string" @bind-Value="@Value.ContentType"
+                                         Label="@TryLocalize("Content-Type")"
+                                         Dense="@Dense"
+                                         Disabled="@(!_captureScreen && string.IsNullOrEmpty(Value?.VideoDevice?.DeviceId))"
+                                         ReadOnly="@ReadOnly"
+                                         ResetValueOnEmptyText="true"
+                                         CoerceText="false"
+                                         CoerceValue="false"
+                                         Placeholder="@TryLocalize("Video Content-Type")"
+                                         SearchFunc="@SearchVideoContentType"
+                                         Clearable="true" />
+
+                        <p>@TryLocalize("Video device")</p>
+                        <MudExSelect T="VideoDevice"
+                                     ItemCollection="@_videoDevices"
+                                     Value="@Value.VideoDevice"
+                                     ValueChanged="@VideoDeviceChanged"
+                                     MultiSelection="false"
+                                     SearchBox="true"
+                                     SearchBoxVariant="Variant.Text"
+                                     Dense="@Dense"
+                                     SelectAll="false"></MudExSelect>
+                    </MudExGroupBox>
+                    <MudExGroupBox Text="@TryLocalize("Additional Audio")" Class="pa-3">
+                        <MudAutocomplete T="string" @bind-Value="@Value.AudioContentType"
+                                         Label="@TryLocalize("Content-Type")"
+                                         Dense="@Dense"
+                                         Disabled="@((Value.AudioDevices?.Count ?? 0) <= 0)"
+                                         ReadOnly="@ReadOnly"
+                                         ResetValueOnEmptyText="true"
+                                         CoerceText="false"
+                                         CoerceValue="false"
+                                         Placeholder="@TryLocalize("Audio Content-Type")"
+                                         SearchFunc="@SearchAudioContentType"
+                                         Clearable="true" />
+
+                        <p>@TryLocalize("Audio devices")</p>
+                        <MudExList T="AudioDevice" ItemCollection="@_audioDevices"
+                                   SelectedValues="@Value.AudioDevices"
+                                   Color="MudExColor.Inherit"
+                                   MultiSelection="true"
+                                   SelectedItemsChanged="@AudioDevicesChanged"
+                                   SearchBox="false"
+                                   SearchBoxBackgroundColor="@("var(--mud-palette-surface)")"
+                                   SearchBoxVariant="Variant.Text"
+                                   Dense="@Dense"
+                                   SelectAll="false"
+                                   Style="height: 260px; overflow-y: auto;"></MudExList>
+                        <Auralizer Overlay="true" OverlayChildContent="true" ConnectMicrophone="true" 
+                                          Style="@GetAuralizerStyle()"
+                                          MicrophoneDeviceId="@Value?.AudioDevices?.FirstOrDefault()?.DeviceId"
+                                          IsActive="@(!string.IsNullOrEmpty(Value?.AudioDevices?.FirstOrDefault()?.DeviceId))"
+                                          MouseWheelDownAction="VisualizerAction.None"
+                                          InitialPreset="AuralizerPreset.ReflexMirror"
+                                          ShowScaleX="false"
+                                          ShowScaleY="false"
+                                          MouseWheelUpAction="VisualizerAction.None"
+                                          ShowBgColor="false">
+
+                        </Auralizer>
+
+                    </MudExGroupBox>
+                    <MudExGroupBox Text="@TryLocalize("Misc Options")" Class="pa-3">
+                        <MudSwitch Class="ml-1" Color="Color.Primary" UncheckedColor="Color.Default" T="bool" @bind-Value="@Value.ShowNotificationWhileRecording" Label="@TryLocalize("Show notification while recording")" />
+                        <MudTimePicker Class="ml-1 mt-1" Clearable="true" Editable="true" @bind-Time="Value.MaxCaptureTime" Label="@TryLocalize("Auto Stop recording after")"
+                                       TimeFormat="@CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern"
+                                       Culture="@CultureInfo.CurrentCulture"></MudTimePicker>
+                    </MudExGroupBox>
+                </MudStack>
+            </Right>
+        </MudExSplitPanel>
+    }
+</div>

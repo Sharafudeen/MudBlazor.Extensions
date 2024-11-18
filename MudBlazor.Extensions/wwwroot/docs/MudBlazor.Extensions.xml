@@ -616,6 +616,163 @@
         <member name="M:MudBlazor.Extensions.Components.Base.MudExJsRequiredBaseFormComponent`3.DisposeAsync">
             <inheritdoc/>
         </member>
+        <member name="T:MudBlazor.Extensions.Components.Base.MudExPickerBase`1">
+            <summary>
+            Base component for a picker
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.IsInitialized">
+            <summary>
+            Is true if init was called
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.Rendered">
+            <summary>
+            Is true if the component is rendered
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.PopverAnimation">
+            <summary>
+            This animation will be used for the picker if the <see cref="T:MudBlazor.PickerVariant"/> is <see cref="F:MudBlazor.PickerVariant.Inline"/>.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.PreInitParameters">
+            <summary>
+            Contains all parameters before init
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.IsOverwritten(System.String)">
+            <summary>
+            Checks if a parameter is overwritten by user
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.IsOverwritten(System.String[])">
+            <summary>
+            Returns true if any of the parameters is overwritten
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.DialogOptions">
+            <summary>
+            The dialog options to be used for the picker if the <see cref="T:MudBlazor.PickerVariant"/> is <see cref="F:MudBlazor.PickerVariant.Dialog"/>.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.BorderColor">
+            <summary>
+            Simple possibility to set the border color of the picker.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.PickerStyle">
+            <summary>
+            Style of the picker.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.ServiceProvider">
+            <summary>
+            Gets or sets the <see cref="T:System.IServiceProvider"/> to be used for dependency injection.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.JsRuntime">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.JSInterop.IJSRuntime"/> to be used.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.LocalizerToUse">
+            <summary>
+            Gets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.Localizer">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.Value">
+            <summary>
+            Gets or sets the value of the color picker.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.BeforeValueChanged(`0,`0)">
+            <summary>
+            Called before the value is changed. If the return value is false, the value will not be changed.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.AfterValueChanged(`0,`0)">
+            <summary>
+            Called after the value is changed.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.ValueChanged">
+            <summary>
+            Gets or sets the callback method when the value of the color picker is changed.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.DelayValueChangeToPickerClose">
+            <summary>
+            Gets or sets a value indicating whether to delay the value change of the color picker until the picker is closed.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.BindWidthToPicker">
+            <summary>
+            If this is set to true, the picker will fit the width of the parent container.
+            This is only has effect if <see cref="T:MudBlazor.PickerVariant"/> is set to <see cref="F:MudBlazor.PickerVariant.Inline"/>.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.TryLocalize(System.String,System.Object[])">
+            <summary>
+            tries to localize given string
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.AllowOpenOnReadOnly">
+            <summary>
+            If this is set to true, the picker will open also if the input is read only.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.Id">
+            <summary>
+            Id for picker element
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.OnInitializedAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.OnAfterRender(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.OnOpenedAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.OnSyncResized(MudBlazor.Interop.BoundingClientRect,System.Nullable{Microsoft.AspNetCore.Components.ElementReference},System.Nullable{Microsoft.AspNetCore.Components.ElementReference})">
+            <summary>
+            Called when the size of the picker is changed by binding.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.OnSyncResized(MudBlazor.Interop.BoundingClientRect)">
+            <summary>
+            Called when the size of the picker is changed by binding.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.OnPickerClosedAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.RaiseChanged">
+            <summary>
+            Raises the <see cref="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.ValueChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.RaiseChangedIf">
+            <summary>
+            Calls the <see cref="M:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.RaiseChanged"/> method if picker is closed or <see cref="P:MudBlazor.Extensions.Components.Base.MudExPickerBase`1.DelayValueChangeToPickerClose"/> is false.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Components.CaptureInfoComponent">
+            <summary>
+            Component to display information about the current recording
+            </summary>
+        </member>
         <member name="T:MudBlazor.Extensions.Components.MoveContentPosition">
             <summary>
             Position to move the ChildContent to a specific element that can defined by ElementSelector.
@@ -885,6 +1042,11 @@
             Set default audio element border color
             </summary>
         </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExAudioPlayer.BorderColor">
+            <summary>
+            Border color of the visualizer element
+            </summary>
+        </member>
         <member name="P:MudBlazor.Extensions.Components.MudExAudioPlayer.AudioElementBackgroundColor">
             <summary>
             Set the audio element background color use null to use color from visualizer gradient
@@ -1037,6 +1199,136 @@
         <member name="M:MudBlazor.Extensions.Components.MudExBaseInput`1.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)">
             <inheritdoc />
         </member>
+        <member name="T:MudBlazor.Extensions.Components.MudExCaptureButton">
+            <summary>
+            Button component for capturing audio and video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.IsRecording">
+            <summary>
+            Indicates whether a recording session is currently active.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.RecordingBorderAnimation">
+            <summary>
+            If this is true border animation is applied when recording is active, but <see cref="P:MudBlazor.Extensions.Components.MudExCaptureButton.RecordingAnimation"/> has no effect if this is turned on.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.RecordingAnimation">
+            <summary>
+            This Animation is playing while recording is active, but only if <see cref="P:MudBlazor.Extensions.Components.MudExCaptureButton.RecordingBorderAnimation"/> is false.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.OnRecordingStarted">
+            <summary>
+            Event triggered when a recording session starts.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.OnRecordingStopped">
+            <summary>
+            Event triggered when a recording session stops.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.OnDataCaptured">
+            <summary>
+            Event triggered capture result is obtained.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.ShowSpectrumOnRecording">
+            <summary>
+            If this is true a spectrum is shown while recording is active but then the <see cref="P:MudBlazor.Extensions.Components.MudExCaptureButton.RecordingIcon"/> has no effect and will not be used.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.RecordingIcon">
+            <summary>
+            Icon displayed when the recording is active. Defaults to a 'Stop' icon.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.RecordingColor">
+            <summary>
+            Color of the icon when the recording is active. Defaults to error color.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.CaptureOptions">
+            <summary>
+            The options to use for the capture.
+            If no options are provided, the user will be prompted to set them.
+            The complexity of the options edit can be controlled with <see cref="P:MudBlazor.Extensions.Components.MudExCaptureButton.EditMode"/>.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.EditMode">
+            <summary>
+            The editing mode to use for the capture options edit.
+            This is only used when <see cref="P:MudBlazor.Extensions.Components.MudExCaptureButton.CaptureOptions"/> is null or <see cref="P:MudBlazor.Extensions.Components.MudExCaptureButton.AlwaysEditOptions"/> is true and the user should set the options.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.AlwaysEditOptions">
+            <summary>
+            Is this is true the user is always prompted to edit the options before starting a recording.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.RememberEditedOptions">
+            <summary>
+            If this is true the options are remembered after the user edited them and then no dialog is shown again.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureButton.BorderAnimationColors">
+            <summary>
+            Gets or sets the collection of colors to use for the gradient.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCaptureButton.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCaptureButton.OnParametersSetAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCaptureButton.OnInitialized">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCaptureButton.OnClickHandler(Microsoft.AspNetCore.Components.Web.MouseEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCaptureButton.StartRecordingAsync">
+            <summary>
+            Starts the recording asynchronously.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCaptureButton.StopRecordingAsync">
+            <summary>
+            Stops the recording asynchronously.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCaptureButton.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:MudBlazor.Extensions.Components.MudExCaptureOptionsEdit">
+            <summary>
+            Component edit capture options
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureOptionsEdit.Value">
+            <inheritdoc />
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureOptionsEdit.ValueChanged">
+            <inheritdoc />
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureOptionsEdit.ReadOnly">
+            <summary>
+            Set to true to have a read only mode
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCaptureOptionsEdit.Dense">
+            <summary>
+            Dense
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCaptureOptionsEdit.GetRenderData(MudBlazor.Extensions.Components.ObjectEdit.Options.ObjectEditPropertyMeta)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCaptureOptionsEdit.OnInitializedAsync">
+            <inheritdoc />
+        </member>
         <member name="T:MudBlazor.Extensions.Components.MudExCardHoverMode">
             <summary>
             Combinable hover modes for the MudExCard
@@ -1071,6 +1363,11 @@
         <member name="P:MudBlazor.Extensions.Components.MudExCardList`1.JsRuntime">
             <summary>
             Dependency Injection for IJSRuntime Service.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCardList`1.Virtualize">
+            <summary>
+            Set this to true to virtualize items is only possible if ItemsSource is used.
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.MudExCardList`1.JsReference">
@@ -1615,39 +1912,9 @@
             Component to Edit MudExColor
             </summary>
         </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.ServiceProvider">
-            <summary>
-            Gets or sets the <see cref="T:System.IServiceProvider"/> to be used for dependency injection.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.JsRuntime">
-            <summary>
-            Gets or sets the <see cref="T:Microsoft.JSInterop.IJSRuntime"/> to be used.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.LocalizerToUse">
-            <summary>
-            Gets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.Localizer">
-            <summary>
-            Gets or sets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
-            </summary>
-        </member>
         <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.FilterVariant">
             <summary>
             Gets or sets the variant filter.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.Value">
-            <summary>
-            Gets or sets the value of the color picker.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.ValueChanged">
-            <summary>
-            Gets or sets the callback method when the value of the color picker is changed.
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.CssVars">
@@ -1690,11 +1957,6 @@
             Gets or sets the color preview mode.
             </summary>
         </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.DelayValueChangeToPickerClose">
-            <summary>
-            Gets or sets a value indicating whether to delay the value change of the color picker until the picker is closed.
-            </summary>
-        </member>
         <member name="P:MudBlazor.Extensions.Components.MudExColorEdit.AutoCloseBehaviour">
             <summary>
             Gets or sets the auto close behavior.
@@ -1726,11 +1988,6 @@
             Gets or sets the label for the defined tab.
             </summary>
         </member>
-        <member name="M:MudBlazor.Extensions.Components.MudExColorEdit.TryLocalize(System.String,System.Object[])">
-            <summary>
-            tries to localize given string
-            </summary>
-        </member>
         <member name="M:MudBlazor.Extensions.Components.MudExColorEdit.OnInitialized">
             <inheritdoc />
         </member>
@@ -1740,9 +1997,6 @@
         <member name="M:MudBlazor.Extensions.Components.MudExColorEdit.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)">
             <inheritdoc />
         </member>
-        <member name="M:MudBlazor.Extensions.Components.MudExColorEdit.OnAfterRender(System.Boolean)">
-            <inheritdoc />
-        </member>
         <member name="M:MudBlazor.Extensions.Components.MudExColorEdit.OnPickerClosedAsync">
             <inheritdoc />
         </member>
@@ -1750,6 +2004,9 @@
             <inheritdoc />
         </member>
         <member name="M:MudBlazor.Extensions.Components.MudExColorEdit.StringValueChangedAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExColorEdit.RaiseChanged">
             <inheritdoc />
         </member>
         <member name="T:MudBlazor.Extensions.Components.MudExColorPicker">
@@ -3621,6 +3878,26 @@
             The on double click handler
             </summary>    
         </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExGroupBox.ChildContent">
+            <summary>
+            Child content of the group box
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExGroupBox.Text">
+            <summary>
+            Text to display as group Header
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExGroupBox.Square">
+            <summary>
+            If true, the group box will have a square border
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExGroupBox.BorderColor">
+            <summary>
+            The color of the border
+            </summary>
+        </member>
         <member name="T:MudBlazor.Extensions.Components.MudExHtmlEdit">
             <summary>
             A WYSIWYG Html editor component.
@@ -3756,21 +4033,6 @@
             Component to Edit Icon values
             </summary>
         </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExIconPicker.ServiceProvider">
-            <summary>
-            Gets or sets the <see cref="T:System.IServiceProvider"/> to be used for dependency injection.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExIconPicker.LocalizerToUse">
-            <summary>
-            Gets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExIconPicker.Localizer">
-            <summary>
-            Gets or sets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
-            </summary>
-        </member>
         <member name="P:MudBlazor.Extensions.Components.MudExIconPicker.PickerWidth">
             <summary>
             The width of the picker in pixels.
@@ -3791,15 +4053,8 @@
             Gets or sets the variant filter.
             </summary>
         </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExIconPicker.Value">
-            <summary>
-            Gets or sets the value.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExIconPicker.ValueChanged">
-            <summary>
-            Gets or sets the callback method when the value of the picker is changed.
-            </summary>
+        <member name="M:MudBlazor.Extensions.Components.MudExIconPicker.AfterValueChanged(System.String,System.String)">
+            <inheritdoc />
         </member>
         <member name="P:MudBlazor.Extensions.Components.MudExIconPicker.PropertyNameChanged">
             <summary>
@@ -3822,11 +4077,6 @@
             Gets or sets the filter for the icons.
             </summary>
         </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExIconPicker.DelayValueChangeToPickerClose">
-            <summary>
-            Gets or sets a value indicating whether to delay the value change of the picker until the picker is closed.
-            </summary>
-        </member>
         <member name="P:MudBlazor.Extensions.Components.MudExIconPicker.AutoCloseOnSelect">
             <summary>
             Gets or sets the auto close behavior.
@@ -3842,11 +4092,6 @@
             Gets or sets the string name of the property for the value.
             </summary>
         </member>
-        <member name="M:MudBlazor.Extensions.Components.MudExIconPicker.TryLocalize(System.String,System.Object[])">
-            <summary>
-            Localizes a text
-            </summary>
-        </member>
         <member name="M:MudBlazor.Extensions.Components.MudExIconPicker.OnInitialized">
             <inheritdoc />
         </member>
@@ -3856,6 +4101,9 @@
         <member name="M:MudBlazor.Extensions.Components.MudExIconPicker.OnAfterRenderAsync(System.Boolean)">
             <inheritdoc />
         </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExIconPicker.OnSyncResized(MudBlazor.Interop.BoundingClientRect)">
+            <inheritdoc />
+        </member>
         <member name="M:MudBlazor.Extensions.Components.MudExIconPicker.OnPickerClosedAsync">
             <inheritdoc />
         </member>
@@ -3863,6 +4111,9 @@
             <inheritdoc />
         </member>
         <member name="M:MudBlazor.Extensions.Components.MudExIconPicker.StringValueChangedAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExIconPicker.RaiseChanged">
             <inheritdoc />
         </member>
         <member name="T:MudBlazor.Extensions.Components.MudExImageViewerSaveOptions">
@@ -5308,9 +5559,9 @@
             The top position of sticky header
             </summary>
         </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExListSubheader`1.SecondaryBackground">
+        <member name="P:MudBlazor.Extensions.Components.MudExListSubheader`1.BackgroundColor">
             <summary>
-            If true, sub header has darker background.
+            Set custom header background color.
             </summary>
         </member>
         <member name="T:MudBlazor.Extensions.Components.MudExMessageDialog">
@@ -5459,6 +5710,14 @@
             <inheritdoc />
         </member>
         <member name="M:MudBlazor.Extensions.Components.MudExOneDriveFilePicker.OnInitialized">
+            <inheritdoc />
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExPicker.ChildContent">
+            <summary>
+            Child content of the picker
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExPicker.PickerContent">
             <inheritdoc />
         </member>
         <member name="T:MudBlazor.Extensions.Components.MudExPopover">
@@ -6526,24 +6785,19 @@
             Button component for speech-to-text functionality, allowing for asynchronous recording and processing of speech input.
             </summary>
         </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.ServiceProvider">
-            <summary>
-            Gets or sets the <see cref="T:System.IServiceProvider"/> to be used for dependency injection.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.LocalizerToUse">
-            <summary>
-            Gets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
-            </summary>
-        </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.UsedDeviceId">
+        <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.UsedDevice">
             <summary>
             Returns the device id to use for recording.
             </summary>
         </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.Localizer">
+        <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.MaxCaptureTime">
             <summary>
-            Gets or sets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
+            If set, the recording will stop after the specified time.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.ShowNotificationWhileRecording">
+            <summary>
+            If this is true a notification toast will be shown while recording.
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.IsRecording">
@@ -6551,9 +6805,9 @@
             Indicates whether a recording session is currently active.
             </summary>
         </member>
-        <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.AudioDeviceId">
+        <member name="P:MudBlazor.Extensions.Components.MudExSpeechToTextButton.AudioDevice">
             <summary>
-            Sets the device id for the audio input device to use for recording.
+            Sets the device for the audio input device to use for recording.
             Leave empty to use the default device.
             </summary>
         </member>
@@ -7992,6 +8246,11 @@
             If this is true audio recordings can be uploaded
             </summary>
         </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExUploadEdit`1.AllowVideoCapture">
+            <summary>
+            If this is true videos can be captured and uploaded
+            </summary>
+        </member>
         <member name="P:MudBlazor.Extensions.Components.MudExUploadEdit`1.RemoveItemButtonAlwaysRight">
             <summary>
             Set to set the item remove button always to the right independent of the <see cref="P:MudBlazor.Extensions.Components.MudExUploadEdit`1.ActionsAdornment"/>
@@ -8140,6 +8399,11 @@
         <member name="P:MudBlazor.Extensions.Components.MudExUploadEdit`1.TextStartRecording">
             <summary>
             Text for recording audio
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExUploadEdit`1.TextStartVideoCapture">
+            <summary>
+            Text for video capture
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.MudExUploadEdit`1.TextUploadFolder">
@@ -8610,6 +8874,74 @@
             Executes the DropZone Click Action
             </summary>
         </member>
+        <member name="T:MudBlazor.Extensions.Components.CssAndStyleApplyMode">
+            <summary>
+            Mode how css and style will be applied.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Components.CssAndStyleApplyMode.BeforeContentRendered">
+            <summary>
+            The css and style will be applied to the container before the content is rendered.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Components.CssAndStyleApplyMode.AfterContentRendered">
+            <summary>
+            The css and style will be applied to the container after the content is rendered.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Components.MudExVirtualItem">
+            <summary>
+            An item that only renders the content if it is in the viewport.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExVirtualItem.IsVisibleChanged">
+            <summary>
+            Is invoked when the visibility of the element changes.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExVirtualItem.ChildContent">
+            <summary>
+            Child content of component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExVirtualItem.NotIntersectingContent">
+            <summary>
+            this content is rendered when element is not into view.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExVirtualItem.Virtualize">
+            <summary>
+            If this is false the <see cref="P:MudBlazor.Extensions.Components.MudExVirtualItem.ChildContent"/>> will always be rendered.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExVirtualItem.CssAndStyleApplyMode">
+            <summary>
+            The css class that will be applied to the container.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExVirtualItem.NotIntersectingClass">
+            <summary>
+            the class that will be applied to the container if the content is not intersecting.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExVirtualItem.IntersectingClass">
+            <summary>
+            the class that will be applied to the container if the content is intersecting.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExVirtualItem.NotIntersectingStyle">
+            <summary>
+            the style that will be applied to the container if the content is not intersecting.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExVirtualItem.IntersectingStyle">
+            <summary>
+            the style that will be applied to the container if the content is intersecting.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExVirtualItem.OnAfterRenderAsync(System.Boolean)">
+            <inheritdoc />
+        </member>
         <member name="T:MudBlazor.Extensions.Components.MudExVirtualize`1">
             <summary>
             Simple virtualize component that can be disabled with support for fixed items and ItemsProvider.
@@ -8687,6 +9019,44 @@
             <summary>
             Returns the render data 
             </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Components.ObjectEdit.IDefaultRenderDataProviderFor`1">
+            <summary>
+            Interface for providing default render data for mudex object only for a specific type
+            This renderdata is only used when that type a property of the current edited object
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.ObjectEdit.IDefaultRenderDataProviderFor`1.GetPropertyType">
+            <summary>
+            Returns the type of the property where this render data is used for
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Components.ObjectEdit.IObjectEditorFor`1">
+            <summary>
+            Interface for object editor
+            Just implement this interface on any component to make it as the default object editor for <typeparam name="T"></typeparam>
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.IObjectEditorFor`1.Value">
+            <summary>
+            The value to edit. This is the value that will be edited by the component
+            It's required that this property has the parameter attribute
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.IObjectEditorFor`1.ValueChanged">
+            <summary>
+            The value changed event
+            It's required that this property has the parameter attribute
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Components.ObjectEdit.IObjectEditorWithCustomPropertyRenderDataFor`1">
+            <summary>
+            Interface for object editor
+            Just implement this interface on any component to make it as the default object editor for <typeparam name="T"></typeparam>
+            Additionally this interface provides a method to get the custom render data for the object editor.
+            This is useful when you want to provide custom render data behavior for your editor if it is used as a property of another object.
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="T:MudBlazor.Extensions.Components.ObjectEdit.IObjectMetaConfiguration`1">
             <summary>
@@ -9140,9 +9510,24 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.ReadOnlyOverwrite">
+            <summary>
+            If this is set all properties will be readonly depending on the value otherwise the property settings for meta configuration will be used
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.SingleExpand">
+            <summary>
+            If this is true only one group can be expanded at a time other groups will be collapsed
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.HasRegistrationForWholeObject">
+            <summary>
+            Returns true if we have a registration for the current object that then uses the registered component
+            </summary>
+        </member>
         <member name="F:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.IsInternalLoading">
             <summary>
-            Is true if currently is a internal Bulk running. Like reset or clear etc..
+            Is true if currently is an internal Bulk running. Like reset or clear etc.
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.InternalToolBarContent">
@@ -9153,6 +9538,11 @@
         <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.Primitive">
             <summary>
             Is true if the value is a primitive type
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.RenderWithType">
+            <summary>
+            Returns the type of the registered editor if available
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.MultiSearch">
@@ -9349,6 +9739,11 @@
         <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.StickyToolbar">
             <summary>
             Whether the toolbar should be sticky to the top of the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.ShowToolbar">
+            <summary>
+            If false the toolbar will be hidden
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEdit`1.StickyToolbarTop">
@@ -12452,9 +12847,387 @@
             Validates the form
             </summary>
         </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ToStringFunc">
+            <summary>
+            Function to display a string representation of the object
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.MetaInformation">
+            <summary>
+            The object edit metadata for the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.MultiSearch">
+            <summary>
+            Set to true to allow multiple values
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.RenderIgnoredReferences">
+            <summary>
+            If you need the reference for dynamic ignored fields for example because of Model Validation or resets you should set this to true
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.IsLoading">
+            <summary>
+            Whether the component should show a loading indicator.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AutoUpdateConditions">
+            <summary>
+            Whether the component should automatically update all registered Conditions.
+            Otherwise you need to call UpdateAllConditions on your own.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.Height">
+            <summary>
+            The height of the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.MaxHeight">
+            <summary>
+            The maximum height of the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.SizeUnit">
+            <summary>
+            The size unit of the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ImportNeedsConfirmation">
+            <summary>
+            Whether the import action needs confirmation.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.RemoveIgnoredFromImport">
+            <summary>
+            If this setting is true, all properties which are ignored by meta config will be removed
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.SetPropertiesAfterImport">
+            <summary>
+            If this setting is true, after import all properties are set instead of full value assignment
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.StateKey">
+            <summary>
+            The state key for saving and restoring the component state.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ImportConfirmText">
+            <summary>
+            The text for confirming an import action.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ImportCancelText">
+            <summary>
+            The text for cancelling an import action.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.Virtualize">
+            <summary>
+            Whether the component should be virtualized.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.LightOverlayLoadingBackground">
+            <summary>
+            Whether the component should have a light overlay loading background.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AutoOverlay">
+            <summary>
+            Whether the component should automatically display an overlay when loading.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ToolbarButtonColor">
+            <summary>
+            The color of the toolbar buttons.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AddScrollToTop">
+            <summary>
+            Whether the component should add a scroll to top button.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ScrollToTopPosition">
+            <summary>
+            The position of the scroll to top button.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AllowSearch">
+            <summary>
+            Whether search functionality is enabled.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AllowExport">
+            <summary>
+            Whether export functionality is enabled.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AllowImport">
+            <summary>
+            Whether import functionality is enabled.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AutoSaveRestoreState">
+            <summary>
+            Whether the component should automatically save and restore its state.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.StoreAndReadValueFromUrl">
+            <summary>
+            If this is true, the component adds the value if possible to url and reads it automatically if its present in Url
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.StateTargetStorage">
+            <summary>
+            The storage location for saving and restoring component state.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ExportFileName">
+            <summary>
+            The file name for exporting the component data.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ImportIcon">
+            <summary>
+            The icon to display for the import action.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.SearchIcon">
+            <summary>
+            The icon to display for the search action.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ExpandCollapseIcon">
+            <summary>
+            The icon to display for expanding and collapsing.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ExportIcon">
+            <summary>
+            The icon to display for the export action.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AutoSkeletonOnLoad">
+            <summary>
+            Whether to automatically display the skeleton loading state on component load.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ToolbarColor">
+            <summary>
+            The color of the toolbar.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.GroupLineColor">
+            <summary>
+            The color of the group lines in the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.GroupElevation">
+            <summary>
+            The elevation of the group.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ToolBarElevation">
+            <summary>
+            The elevation of the toolbar.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ToolBarClassObjectEdit">
+            <summary>
+            A CSS class for the component toolbar.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ToolBarPaperClass">
+            <summary>
+            A CSS class for the component toolbar paper.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.StickyToolbar">
+            <summary>
+            Whether the toolbar should be sticky to the top of the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.StickyToolbarTop">
+            <summary>
+            The positioning CSS value for a sticky toolbar.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AfterImport">
+            <summary>
+            Called after the component has imported data.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AfterExport">
+            <summary>
+            Called after the component has exported data.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.BeforeExport">
+            <summary>
+            Called before the component export's data. Provides the export data to be manipulated.
+            If you need to change content of parameter to manipulate export data you can do it here
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.BeforeImport">
+            <summary>
+            Called before the component import's data. Provides the import data to be manipulated.
+            Here you can change content of parameter to manipulate import data
+            For example you can remove some properties or change the values
+            This is called before the import is executed
+            importData.Json = "{\"FirstName\": \"Changed Test\"}";
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.PropertyChanged">
+            <summary>
+            Called when a property of the edited object is changed.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ShowPathAsTitleForEachProperty">
+            <summary>
+            Whether to show the property path as title for each property.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.PathDisplayMode">
+            <summary>
+            The path display mode for the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.GroupingStyle">
+            <summary>
+            The grouping style for the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.FilterMode">
+            <summary>
+            The filter mode for the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.SearchActiveChanged">
+            <summary>
+            Event callback if filter input is toggled
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.SearchActive">
+            <summary>
+            Search is active
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.Filter">
+            <summary>
+            The filter value for the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.Filters">
+            <summary>
+            The filter values for the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AutoHideDisabledFields">
+            <summary>
+            Whether to automatically hide disabled fields.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.DisableGrouping">
+            <summary>
+            Whether to disable grouping.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.DefaultGroupName">
+            <summary>
+            The default group name for the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.DisableFieldFallback">
+            <summary>
+            Whether to disable field fallback.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.WrapInMudGrid">
+            <summary>
+            Whether to wrap the component in a MudGrid component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.GroupsCollapsible">
+            <summary>
+            Whether groups are collapsible in the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.GlobalResetSettings">
+            <summary>
+            The global reset settings for the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.DefaultPropertyResetSettings">
+            <summary>
+            The default property reset settings for the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ResetConfirmationMessageBoxOptions">
+            <summary>
+            The message box options for reset confirmation.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ResetConfirmationDialogOptions">
+            <summary>
+            The dialog options for reset confirmation.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.MetaConfiguration">
+            <summary>
+            The action to perform for object metadata configuration.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.MetaConfigurationAsync">
+            <summary>
+            The async action to perform for object metadata configuration.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ToolBarActionAlignment">
+            <summary>
+            The alignment of actions in the component toolbar.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ToolBarContent">
+            <summary>
+            The content to display in the component toolbar.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ConfigureBehaviourForRegisteredConfigurations">
+            <summary>
+            The behaviour how registered Meta and configured meta should applied
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ConfigureMetaInformationAlways">
+            If this setting is true a manual passed MetaInformation will also re configured
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.ErrorMessage">
+            <summary>
+            Error message to display
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.CustomResetFunction">
+            <summary>
+            Set this to handle Reset on your own
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.OnInitialized">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.OnPickerClosedAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.ObjectEdit.MudExObjectEditPicker`1.AfterValueChanged(`0,`0)">
+            <inheritdoc />
+        </member>
         <member name="T:MudBlazor.Extensions.Components.ObjectEdit.MudExPropertyEdit">
             <summary>
             Editor for a property of an object. Used internally inside the MudExObjectEdit
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExPropertyEdit.ReadOnlyOverwrite">
+            <summary>
+            If this is set all properties will be readonly depending on the value otherwise the property settings for meta configuration will be used
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.ObjectEdit.MudExPropertyEdit.StoreAndReadValueFromUrl">
@@ -13030,6 +13803,21 @@
             Initializes the value binding for the current render data.
             </summary>
         </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.Options.RenderData.OneTimeBinding">
+            <summary>
+            If this is set to true, the binding will only be done once at first render otherwise StateChange updates binding as well.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.Options.RenderData.AlwaysMapToField">
+            <summary>
+            If this is set to true and field and property type are equal it will anyhow map the propertyType to the fieldType what creates a clone of an object.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.Options.RenderData.AlwaysMapToProperty">
+            <summary>
+            If this is set to true and field and property type are equal it will anyhow map the fieldType to the propertyType what creates a clone of an object.
+            </summary>
+        </member>
         <member name="P:MudBlazor.Extensions.Components.ObjectEdit.Options.RenderData.ComponentReference">
             <summary>
             Component reference for the current render data.
@@ -13391,6 +14179,21 @@
             Component type to be rendered.
             </summary>
         </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.Options.IRenderData.OneTimeBinding">
+            <summary>
+            If this is set to true, the binding will only be done once at first render otherwise StateChange updates binding as well.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.Options.IRenderData.AlwaysMapToField">
+            <summary>
+            If this is set to true and field and property type are equal it will anyhow map the propertyType to the fieldType what creates a clone of an object.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.ObjectEdit.Options.IRenderData.AlwaysMapToProperty">
+            <summary>
+            If this is set to true and field and property type are equal it will anyhow map the fieldType to the propertyType what creates a clone of an object.
+            </summary>
+        </member>
         <member name="P:MudBlazor.Extensions.Components.ObjectEdit.Options.IRenderData.Attributes">
             <summary>
             Attributes to be used when rendering the component.
@@ -13622,6 +14425,11 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExTreeView`1.RenderedTreeComponent">
+            <summary>
+            Inner component that renders the tree.
+            </summary>
+        </member>
         <member name="P:MudBlazor.Extensions.Components.MudExTreeView`1.ViewMode">
             <summary>
             Mode controls how the tree view will be rendered.
@@ -13646,6 +14454,24 @@
             <summary>
             Parameters for the component based on ViewMode. 
             </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeView`1.ExpandAll">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeView`1.ExpandAllLoaded">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeView`1.ExpandAllNotLoaded">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeView`1.ToggleExpand(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeView`1.SetExpanded(`0,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeView`1.Update">
+            <inheritdoc />
         </member>
         <member name="T:MudBlazor.Extensions.Components.TreeViewItemContext`1">
             <summary>
@@ -13893,6 +14719,16 @@
             Expand all nodes
             </summary>
         </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeViewBase`1.ExpandAllLoaded">
+            <summary>
+            Expand all nodes their children are loaded
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeViewBase`1.ExpandAllNotLoaded">
+            <summary>
+            Expand all nodes their children aren't loaded yet
+            </summary>
+        </member>
         <member name="M:MudBlazor.Extensions.Components.MudExTreeViewBase`1.CollapseAll">
             <summary>
             Collapse all nodes
@@ -14011,7 +14847,7 @@
             Style for item container
             </summary>
         </member>
-        <member name="M:MudBlazor.Extensions.Components.MudExTreeViewBase`1.StyleStr">
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeViewBase`1.StyleStr(System.Action{MudBlazor.Extensions.Helper.MudExStyleBuilder})">
             <summary>
             Style for main control
             </summary>
@@ -14019,6 +14855,23 @@
         <member name="M:MudBlazor.Extensions.Components.MudExTreeViewBase`1.GetTermToHighlight(System.String)">
             <summary>
             Get the term to highlight
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeViewBase`1.ToolBarClassStr">
+            <summary>
+            returns the class for the toolbar
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeViewBase`1.ToolBarStyleStr">
+            <summary>
+            Returns the style for the toolbar
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeViewBase`1.Update">
+            <summary>
+            Updates the state of the component
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.MudExTreeViewBreadcrumb`1.MenuAnchorOrigin">
@@ -14193,6 +15046,26 @@
             Label for the back link.
             </summary>
         </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExTreeViewList`1.RenderBackLink">
+            <summary>
+            Set false to hide the back link.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExTreeViewList`1.RenderHomeLink">
+            <summary>
+            Set false to hide the home link.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExTreeViewList`1.NavigationLinkBarClass">
+            <summary>
+            Css class for the toolbar where back and home link are located in
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExTreeViewList`1.NavigationLinkBarStyle">
+            <summary>
+            Style for the toolbar where back and home link are located in
+            </summary>
+        </member>
         <member name="M:MudBlazor.Extensions.Components.MudExTreeViewList`1.GetBackNodeTarget">
             <summary>
             Context and label of back node
@@ -14207,6 +15080,31 @@
         </member>
         <member name="M:MudBlazor.Extensions.Components.MudExTreeViewList`1.NodeClick(`0)">
             <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExTreeViewList`1.AnimationStyleStr">
+            <summary>
+            Creates the style with animation styles included.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExIconButton.ServiceProvider">
+            <summary>
+            Gets or sets the <see cref="T:System.IServiceProvider"/> to be used for dependency injection.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExIconButton.LocalizerToUse">
+            <summary>
+            Gets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExIconButton.TryLocalize(System.String,System.Object[])">
+            <summary>
+            Tries to localize given text if localizer and translation is available
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExIconButton.Localizer">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/> to be used for localizing strings.
+            </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.MudExIconButton.ToolTip">
             <summary>
@@ -14226,6 +15124,259 @@
         <member name="P:MudBlazor.Extensions.Components.MudExValidationWrapper`1.Value">
             <summary>
             The value of the ValidationWrapper component. This will be passed to the set validation function.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.Capture.CaptureId">
+            <summary>
+            Id for a capture.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.Capture.CaptureId.#ctor(System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureId"/>.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.Capture.CaptureOptions">
+            <summary>
+            Options for capturing video and audio.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.ShowNotificationWhileRecording">
+            <summary>
+            If this is true a notification toast will be shown while recording.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.ContentType">
+            <summary>
+            The content type for video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.AudioContentType">
+            <summary>
+            The content type for audio.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.ScreenCapture">
+            <summary>
+            The screen capture options.
+            Provide a boolean to capture a screen or a <see cref="T:MudBlazor.Extensions.Core.W3C.MediaStreamTrack"/> to capture a specific preselected screen or a <see cref="T:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions"/> to capture the screen with options.
+            Set false to not capture the screen.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.VideoDevice">
+            <summary>
+            The video device to record.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.AudioDevices">
+            <summary>
+            The audio device ids to record audio.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.MaxCaptureTime">
+            <summary>
+            If set, the recording will stop after the specified time.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.OverlaySource">
+            <summary>
+            The source for the overlay default is camera as overlay over screen.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.OverlayPosition">
+            <summary>
+            Position of the overlay.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.OverlaySize">
+            <summary>
+            Size of the overlay.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.OverlayCustomPosition">
+            <summary>
+            For the Overlay you can set <see cref="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.OverlayPosition"/> to <see cref="F:MudBlazor.DialogPosition.Custom"/> and set the custom position for the overlay here.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.Capture.CaptureOptions.Valid">
+            <summary>
+            Returns true when anything to capture is set.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.Capture.CaptureOptions.GetOverlayPosition(MudBlazor.Extensions.Core.MudExDimension,System.Nullable{MudBlazor.Extensions.Core.MudExDimension})">
+            <summary>
+            returns the position for the overlay based on given containerDimension.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.Capture.CaptureOptions.GetOverlayPosition(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            returns the position for the overlay based on given reference sizes.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.ScreenOnly">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/> setting to capture the screen only.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.CameraOnly">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/> setting to capture the camera only.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.AudioOnly">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/> setting to capture audio only.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.ScreenAndCamera">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/> setting to capture the screen and camera.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.ScreenAndAudio">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/> setting to capture the screen and audio.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.CameraAndAudio">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/> setting to capture the camera and audio.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.ScreenCameraAndAudio">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/> setting to capture the screen, camera and audio.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.CameraAndScreen">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/> setting to capture the screen and camera with the screen as overlay over the camera.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureOptions.CameraScreenAndAudio">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/> setting to capture the screen, camera and audio with the screen as overlay over the camera.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.Capture.CaptureOptionsEditMode">
+            <summary>
+            The edit mode for the capture options dialog.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.Capture.CaptureOptionsEditMode.Full">
+            <summary>
+            The full edit mode.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.Capture.CaptureOptionsEditMode.Simple">
+            <summary>
+            The simple edit mode.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.Capture.CaptureResult">
+            <summary>
+            The result of a capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.CaptureId">
+            <summary>
+            Id of the capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.Options">
+            <summary>
+            The options used for the capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.Bytes">
+            <summary>
+            The captured data of the combined result.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.BlobUrl">
+            <summary>
+            Blob URL of the captured data for combined.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.CaptureData">
+            <summary>
+            Captured data of the screen.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.CameraData">
+            <summary>
+            The captured data of the camera.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.AudioData">
+            <summary>
+            recorded audio data.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.SystemAudioData">
+            <summary>
+            recorded system audio data.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.CombinedData">
+            <summary>
+            Combined data of all captures.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.CaptureResult.AllData">
+            <summary>
+            All data of the capture.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.Capture.OverlaySource">
+            <summary>
+            The source for the overlay.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.Capture.OverlaySource.VideoDevice">
+            <summary>
+            Use the camera as overlay over screen.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.Capture.OverlaySource.CapturedScreen">
+            <summary>
+            Use the screen as overlay over camera.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.Capture.SimpleCaptureOptions">
+            <summary>
+            This class represents the simple capture options that can then converted to real <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/>.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.SimpleCaptureOptions.RecordScreen">
+            <summary>
+            Set to true to record the screen.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.SimpleCaptureOptions.RecordAudio">
+            <summary>
+            Set to true to record audio.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.Capture.SimpleCaptureOptions.RecordCamera">
+            <summary>
+            Set to true to record the camera.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.Capture.SimpleCaptureOptions.Valid">
+            <summary>
+            Is true when anything can be recorded.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.Capture.SimpleCaptureOptions.ToCaptureOptions">
+            <summary>
+            Converts the simple options to real <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/>.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.Capture.SimpleCaptureOptions.From(MudBlazor.Extensions.Core.Capture.CaptureOptions)">
+            <summary>
+            Creates a new instance of <see cref="T:MudBlazor.Extensions.Core.Capture.SimpleCaptureOptions"/> from the specified <see cref="T:MudBlazor.Extensions.Core.Capture.CaptureOptions"/>.
             </summary>
         </member>
         <member name="T:MudBlazor.Extensions.Core.CssVariable">
@@ -15088,6 +16239,60 @@
             Render tree view as flat list.
             </summary>
         </member>
+        <member name="T:MudBlazor.Extensions.Core.ICaptureService">
+            <summary>
+            Service for capturing the screen or camera and audio.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.ICaptureService.EditCaptureOptionsAsync(MudBlazor.Extensions.Core.Capture.CaptureOptionsEditMode,MudBlazor.Extensions.Core.Capture.CaptureOptions)">
+            <summary>
+            Shows a dialog where the user can specify or edit the capture options.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.ICaptureService.StartCaptureAsync(MudBlazor.Extensions.Core.Capture.CaptureOptions,System.Action{MudBlazor.Extensions.Core.Capture.CaptureResult},System.Action{MudBlazor.Extensions.Core.Capture.CaptureId})">
+            <summary>
+            Starts capturing the screen or camera and audio.
+            </summary>
+            <returns>Id to stop recording</returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.ICaptureService.StopCaptureAsync(MudBlazor.Extensions.Core.W3C.MediaStreamTrack)">
+            <summary>
+            Stops the preview capture for the specified track.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.ICaptureService.StopCaptureAsync(MudBlazor.Extensions.Core.Capture.CaptureId)">
+            <summary>
+            Stops the capture with the specified ID.
+            </summary>
+            <param name="captureId">The id for the capture recording to stop</param>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.ICaptureService.StopAllCapturesAsync">
+            <summary>
+            Stops all captures.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.ICaptureService.GetAudioDevicesAsync">
+            <summary>
+            Gets the available audio devices.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.ICaptureService.GetVideoDevicesAsync">
+            <summary>
+            Gets the available video devices.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.ICaptureService.SelectCaptureSourceAsync(MudBlazor.Extensions.Core.W3C.DisplayMediaOptions,OneOf.OneOf{Microsoft.AspNetCore.Components.ElementReference,System.String})">
+            <summary>
+            Selects the capture source.
+            </summary>
+            <param name="displayMediaOptions">The media options for capturing</param>
+            <param name="elementForPreview">Specify an element to show preview. This should be a ElementReference of a videoElement or a selector for a videoElement</param>
+            <returns></returns>
+        </member>
         <member name="T:MudBlazor.Extensions.Core.IDialogEventService">
             <summary>
             Dialog event service
@@ -15318,6 +16523,16 @@
         <member name="M:MudBlazor.Extensions.Core.IMudExExternalFilePicker.PickAsync(System.Threading.CancellationToken)">
             <summary>
             Forces the picker to open and return files
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.IMudExFileService">
+            <summary>
+            FileService 
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.IMudExFileService.ReadExcelFile(System.IO.Stream,System.String)">
+            <summary>
+            Reads a stream as excel file
             </summary>
         </member>
         <member name="M:MudBlazor.Extensions.Core.IMudExFileService.ToAbsoluteUrlAsync(System.String)">
@@ -16108,7 +17323,17 @@
             This property is marked with attributes to be ignored during JSON serialization.
             </remarks>
         </member>
-        <member name="P:MudBlazor.Extensions.Core.SpeechRecognitionOptions.DeviceId">
+        <member name="P:MudBlazor.Extensions.Core.SpeechRecognitionOptions.MaxCaptureTime">
+            <summary>
+            If set, the recording will stop after the specified time.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.SpeechRecognitionOptions.ShowNotificationWhileRecording">
+            <summary>
+            If this is true a notification toast will be shown while recording.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.SpeechRecognitionOptions.Device">
             <summary>
             DeviceId for audio input, used for selecting the appropriate microphone.
             </summary>
@@ -16181,6 +17406,617 @@
         <member name="F:MudBlazor.Extensions.Core.StateChangeMode.Synchronous">
             <summary>
             Equals StateHasChanged()
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.AudioConstraints">
+            <summary>
+            Represents constraints for capturing audio, including settings like device ID, echo cancellation, and sample rate.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.DeviceId">
+            <summary>
+            Gets or sets the device ID for the audio source.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.GroupId">
+            <summary>
+            Gets or sets the group ID for the audio source.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.SuppressLocalAudioPlayback">
+            <summary>
+            Indicates whether local audio playback should be suppressed.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.EchoCancellation">
+            <summary>
+            Indicates whether echo cancellation is enabled.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.AutoGainControl">
+            <summary>
+            Indicates whether auto gain control is enabled.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.NoiseSuppression">
+            <summary>
+            Indicates whether noise suppression is enabled.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.SampleRate">
+            <summary>
+            Gets or sets the desired sample rate for audio capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.SampleSize">
+            <summary>
+            Gets or sets the desired sample size for audio capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.ChannelCount">
+            <summary>
+            Gets or sets the number of audio channels.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.Latency">
+            <summary>
+            Gets or sets the desired latency for audio capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.AudioConstraints.VoiceIsolation">
+            <summary>
+            Gets or sets the voice isolation mode.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.AudioDevice">
+            <summary>
+            Represents an audio device.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.AudioDevice.Default">
+            <summary>
+            Default audio device.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.CaptureCursor">
+            <summary>
+            Specifies how the cursor should be captured during video recording.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureCursor.Always">
+            <summary>
+            Always capture the cursor.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureCursor.Motion">
+            <summary>
+            Capture the cursor only when it moves.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureCursor.Never">
+            <summary>
+            Never capture the cursor.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.CaptureDisplaySurface">
+            <summary>
+            Defines types of display surfaces for video capture.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureDisplaySurface.Monitor">
+            <summary>
+            Capture the entire monitor display.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureDisplaySurface.Window">
+            <summary>
+            Capture a specific window.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureDisplaySurface.Application">
+            <summary>
+            Capture an application view.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureDisplaySurface.Browser">
+            <summary>
+            Capture the browser display.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.CaptureExposureMode">
+            <summary>
+            Defines the exposure modes for a camera.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureExposureMode.None">
+            <summary>
+            No specific exposure mode.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureExposureMode.Manual">
+            <summary>
+            Manual exposure control.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureExposureMode.Single">
+            <summary>
+            Single-shot exposure adjustment.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureExposureMode.Continuous">
+            <summary>
+            Continuous exposure adjustment.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.CaptureFacingMode">
+            <summary>
+            Specifies the facing mode for the camera (e.g., front-facing or rear-facing).
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureFacingMode.User">
+            <summary>
+            The camera is user-facing.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureFacingMode.Environment">
+            <summary>
+            The camera is environment-facing (e.g., rear camera).
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureFacingMode.Left">
+            <summary>
+            The camera faces the left side.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureFacingMode.Right">
+            <summary>
+            The camera faces the right side.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.CaptureFocusMode">
+            <summary>
+            Specifies focus modes for camera devices.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureFocusMode.None">
+            <summary>
+            No specific focus mode.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureFocusMode.Manual">
+            <summary>
+            Manual focus control.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureFocusMode.Single">
+            <summary>
+            Single focus adjustment.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureFocusMode.Continuous">
+            <summary>
+            Continuous focus adjustment.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.CapturePoint">
+            <summary>
+            Represents a point in 2D space, used for specifying areas of interest in video capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.CapturePoint.X">
+            <summary>
+            The X-coordinate of the point.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.CapturePoint.Y">
+            <summary>
+            The Y-coordinate of the point.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.CaptureResizeMode">
+            <summary>
+            Defines resize modes for video capture.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureResizeMode.None">
+            <summary>
+            No specific resize mode.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureResizeMode.CropAndScale">
+            <summary>
+            Crop the captured video and scale it to fit.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.CaptureVoiceIsolationMode">
+            <summary>
+            Specifies voice isolation modes for audio capture.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureVoiceIsolationMode.Off">
+            <summary>
+            No voice isolation.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureVoiceIsolationMode.Standard">
+            <summary>
+            Standard voice isolation.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureVoiceIsolationMode.High">
+            <summary>
+            High level of voice isolation.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.CaptureWhiteBalanceMode">
+            <summary>
+            Specifies white balance modes for camera devices.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureWhiteBalanceMode.None">
+            <summary>
+            No specific white balance mode.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureWhiteBalanceMode.Manual">
+            <summary>
+            Manual white balance adjustment.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureWhiteBalanceMode.Single">
+            <summary>
+            Single-shot white balance adjustment.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.CaptureWhiteBalanceMode.Continuous">
+            <summary>
+            Continuous white balance adjustment.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.DeviceKind">
+            <summary>
+            HardwareDeviceKind
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.DeviceKind.VideoInput">
+            <summary>
+            Video input device.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.DeviceKind.AudioInput">
+            <summary>
+            Audio input device.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.DeviceKind.AudioOutput">
+            <summary>
+            Audio output device.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.DeviceKind.Video">
+            <summary>
+            Video device.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions">
+            <summary>
+            Represents the options for capturing display media, including video and audio constraints, 
+            preferences for capturing the current tab, and settings for system audio and browser surfaces.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.PreferCurrentTab">
+            <summary>
+            Indicates whether the current tab is preferred for capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.SelfBrowserSurface">
+            <summary>
+            Determines whether the self browser surface should be included or excluded during capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.SystemAudio">
+            <summary>
+            Determines whether the system audio should be included or excluded.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.SurfaceSwitching">
+            <summary>
+            Determines whether surface switching is allowed.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.MonitorTypeSurfaces">
+            <summary>
+            Determines whether monitor-type surfaces should be included or excluded.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.Video">
+            <summary>
+            Gets or sets the constraints for video capture.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.Audio">
+            <summary>
+            Gets or sets the constraints for audio capture.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.WithSystemAudio">
+            <summary>
+            Configures the options to include system audio.
+            </summary>
+            <returns>The updated <see cref="T:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions"/>.</returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.WithoutSystemAudio">
+            <summary>
+            Configures the options to exclude system audio.
+            </summary>
+            <returns>The updated <see cref="T:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions"/>.</returns>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.Default">
+            <summary>
+            Provides default display media options.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.WithoutAudio">
+            <summary>
+            Provides display media options without audio.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.BestQuality">
+            <summary>
+            Provides display media options configured for best quality.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.LowBandwidth">
+            <summary>
+            Provides display media options optimized for low bandwidth usage.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.DisplayMediaOptions.CurrentTabWithAudio">
+            <summary>
+            Provides display media options to capture the current tab with audio.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.HardwareDeviceInfo">
+            <summary>
+            Represents a hardware device.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.HardwareDeviceInfo.DeviceId">
+            <summary>
+            Device id.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.HardwareDeviceInfo.GroupId">
+            <summary>
+            Group id.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.HardwareDeviceInfo.Label">
+            <summary>
+            Label of the device.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.HardwareDeviceInfo.Kind">
+            <summary>
+            Kind of the device.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Core.W3C.HardwareDeviceInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.IncludeExclude">
+            <summary>
+            Defines options to include or exclude a feature.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.IncludeExclude.Include">
+            <summary>
+            Include the feature.
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Core.W3C.IncludeExclude.Exclude">
+            <summary>
+            Exclude the feature.
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.MediaStreamTrack">
+            <summary>
+            MediaStreamTrack
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.MediaStreamTrack.AccessId">
+            <summary>
+            AccessId
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.MediaStreamTrack.Enabled">
+            <summary>
+            Is enabled
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.MediaStreamTrack.Id">
+            <summary>
+            Track Id
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.MediaStreamTrack.Muted">
+            <summary>
+            Is muted
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.MediaStreamTrack.ReadyState">
+            <summary>
+            Ready state
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.MediaStreamTrack.Stats">
+            <summary>
+            Stats
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.MediaStreamTrackVideoStats">
+            <summary>
+            MediaStreamTrackVideoStats
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.MediaStreamTrackVideoStats.DeliveredFrames">
+            <summary>
+            Delivered frames
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.MediaStreamTrackVideoStats.DiscardedFrames">
+            <summary>
+            Discarded frames
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.MediaStreamTrackVideoStats.TotalFrames">
+            <summary>
+            Total frames
+            </summary>
+        </member>
+        <member name="T:MudBlazor.Extensions.Core.W3C.VideoConstraints">
+            <summary>
+            Represents constraints for capturing video, including settings like resolution, frame rate, and device-specific properties.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.DeviceId">
+            <summary>
+            Gets or sets the device ID for the video source.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.GroupId">
+            <summary>
+            Gets or sets the group ID for the video source.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.DisplaySurface">
+            <summary>
+            Gets or sets the display surface type (e.g., monitor, window).
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.LogicalSurface">
+            <summary>
+            Indicates whether to capture the logical surface of the display.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Cursor">
+            <summary>
+            Specifies how the cursor should be captured (e.g., always, motion only).
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Width">
+            <summary>
+            Gets or sets the desired width of the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Height">
+            <summary>
+            Gets or sets the desired height of the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.AspectRatio">
+            <summary>
+            Gets or sets the desired aspect ratio of the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.FrameRate">
+            <summary>
+            Gets or sets the desired frame rate of the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.FacingMode">
+            <summary>
+            Specifies the facing mode (e.g., user-facing or environment-facing).
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.ResizeMode">
+            <summary>
+            Specifies the resize mode for the video (e.g., crop and scale).
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Brightness">
+            <summary>
+            Gets or sets the desired brightness level for the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.ColorTemperature">
+            <summary>
+            Gets or sets the desired color temperature for the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Contrast">
+            <summary>
+            Gets or sets the desired contrast level for the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Saturation">
+            <summary>
+            Gets or sets the desired saturation level for the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Sharpness">
+            <summary>
+            Gets or sets the desired sharpness level for the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.ExposureCompensation">
+            <summary>
+            Gets or sets the exposure compensation for the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.ExposureMode">
+            <summary>
+            Specifies the exposure mode (e.g., manual, single, continuous).
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.ExposureTime">
+            <summary>
+            Gets or sets the desired exposure time for the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.ISO">
+            <summary>
+            Gets or sets the ISO sensitivity for the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.FocusMode">
+            <summary>
+            Specifies the focus mode (e.g., manual, continuous).
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.FocusDistance">
+            <summary>
+            Gets or sets the focus distance for the video.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.PointsOfInterest">
+            <summary>
+            Gets or sets points of interest for the camera to focus on.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Pan">
+            <summary>
+            Gets or sets the pan level for the camera.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Tilt">
+            <summary>
+            Gets or sets the tilt level for the camera.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Zoom">
+            <summary>
+            Gets or sets the zoom level for the camera.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.Torch">
+            <summary>
+            Indicates whether the camera's torch (flashlight) is enabled.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Core.W3C.VideoConstraints.WhiteBalanceMode">
+            <summary>
+            Specifies the white balance mode (e.g., manual, continuous).
             </summary>
         </member>
         <member name="T:MudBlazor.Extensions.MudExDialogResultAction">
@@ -17317,6 +19153,16 @@
             Full height
             </summary>
         </member>
+        <member name="F:MudBlazor.Extensions.Helper.MudExCss.Classes.General.Hidden">
+            <summary>
+            Hidden
+            </summary>
+        </member>
+        <member name="F:MudBlazor.Extensions.Helper.MudExCss.Classes.General.Collapsed">
+            <summary>
+            Hidden
+            </summary>
+        </member>
         <member name="M:MudBlazor.Extensions.Helper.MudExCss.CssClasses.#ctor(System.String,System.String[])">
             <summary>
             Constructor
@@ -17767,6 +19613,21 @@
             <param name="when">If false, no properties will be added to the builder</param>
             <returns>This MudExStyleBuilder instance</returns>
         </member>
+        <member name="M:MudBlazor.Extensions.Helper.MudExStyleBuilder.MergeWith(System.Action{MudBlazor.Extensions.Helper.MudExStyleBuilder},System.Boolean)">
+            <summary>
+            Merges the properties and values from the given Action with the current style string
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Helper.MudExStyleBuilder.MergeWith(System.String,System.Boolean)">
+            <summary>
+            Merges the properties and values from the given style string with the current style string
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Helper.MudExStyleBuilder.MergeWith(MudBlazor.Extensions.Helper.MudExStyleBuilder,System.Boolean)">
+            <summary>
+            Merges the properties and values from the given styleBuilder with the current style string
+            </summary>
+        </member>
         <member name="M:MudBlazor.Extensions.Helper.MudExStyleBuilder.With(System.Object,MudBlazor.Extensions.Core.CssUnit,System.Boolean)">
             <summary>
             Converts given object to a CSS style string and adds all properties and values to this builder
@@ -18117,6 +19978,11 @@
             </summary>
         </member>
         <member name="M:MudBlazor.Extensions.Helper.MudExStyleBuilder.WithPosition(MudBlazor.Extensions.Core.Css.Position,System.Boolean)">
+            <summary>
+            Specifies the position property using a CSS string value, if the 'when' condition is true.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Helper.MudExStyleBuilder.WithPosition(MudBlazor.Extensions.Core.MudExPosition,System.Boolean)">
             <summary>
             Specifies the position property using a CSS string value, if the 'when' condition is true.
             </summary>
@@ -20330,6 +22196,17 @@
             </summary>
             <returns>A reference to the current instance.</returns>
         </member>
+        <member name="P:MudBlazor.Extensions.Options.DialogOptionsEx.KeepMaxSizeConstraints">
+            <summary>
+            If true the dialog will keep the max size constraints for resizing defined with <see cref="P:MudBlazor.Extensions.Options.DialogOptionsEx.MaxHeight"/> and <see cref="T:MudBlazor.MaxWidth"/>.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Options.DialogOptionsEx.KeepRelations">
+            <summary>
+            If true the dialog will keep the relations to the parent component.
+            That means sizes and positions will set to values in percentages.
+            </summary>
+        </member>
         <member name="P:MudBlazor.Extensions.Options.DialogOptionsEx.AnimateClose">
             <summary>
             If true the dialog will be animated on close
@@ -21224,6 +23101,43 @@
             <param name="dialogReference">The reference to the dialog from which the appearance will be removed.</param>
             <returns>The removed appearance.</returns>
         </member>
+        <member name="T:MudBlazor.Extensions.Services.MudExCaptureNotificationService">
+            <summary>
+            Capture service for capturing audio and video.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExCaptureNotificationService.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:MudBlazor.Extensions.Services.MudExCaptureService">
+            <summary>
+            Capture service for capturing audio and video.
+            </summary>
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExCaptureService.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExCaptureService.EditCaptureOptionsAsync(MudBlazor.Extensions.Core.Capture.CaptureOptionsEditMode,MudBlazor.Extensions.Core.Capture.CaptureOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExCaptureService.StartCaptureAsync(MudBlazor.Extensions.Core.Capture.CaptureOptions,System.Action{MudBlazor.Extensions.Core.Capture.CaptureResult},System.Action{MudBlazor.Extensions.Core.Capture.CaptureId})">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExCaptureService.StopCaptureAsync(MudBlazor.Extensions.Core.Capture.CaptureId)">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExCaptureService.StopAllCapturesAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExCaptureService.GetAudioDevicesAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExCaptureService.GetVideoDevicesAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExCaptureService.SelectCaptureSourceAsync(MudBlazor.Extensions.Core.W3C.DisplayMediaOptions,OneOf.OneOf{Microsoft.AspNetCore.Components.ElementReference,System.String})">
+            <inheritdoc />
+        </member>
         <member name="T:MudBlazor.Extensions.Services.MudExDialogService">
             <summary>
             Overriden DialogService to provide additional functionality
@@ -21433,6 +23347,11 @@
         </member>
         <member name="M:MudBlazor.Extensions.Services.MudExFileService.DisposeAsync">
             <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Services.MudExFileService.ReadExcelFile(System.IO.Stream,System.String)">
+            <summary>
+            Reads a stream as excel file
+            </summary>
         </member>
     </members>
 </doc>

@@ -24,9 +24,16 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
     /// </summary>
     protected HierarchicalFilter<TItem> FilterManager = new();
 
+    [Parameter] public bool Virtualize { get; set; }
     [Parameter] public string ToolBarStyle { get; set; }
     [Parameter] public string ToolBarClass { get; set; }
     [Parameter] public bool WrapToolBarContent {get; set; }
+
+    public IList<(string Term, TItem Item)> GetFilteredItems(IEnumerable<TItem> nodes)
+    {
+        var result =  from item in nodes.EmptyIfNull() let search = FilterManager.GetMatchedSearch(item) where search.Found select (search.Term, item);
+        return result.ToList();
+    }
 
     /// <summary>
     /// Returns the filtered items as a collection of <see cref="TreeViewItemContext{TItem}"/>
@@ -318,6 +325,16 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
     public virtual void ExpandAll() => _expanded = new HashSet<TItem>(Items.Recursive(n => n.Children ?? Enumerable.Empty<TItem>()));
 
     /// <summary>
+    /// Expand all nodes their children are loaded
+    /// </summary>
+    public virtual void ExpandAllLoaded() => _expanded = new HashSet<TItem>(Items.Where(n => !n.NeedsLoadChildren()).Recursive(n => n.GetLoadedChildren() ?? Enumerable.Empty<TItem>()));
+
+    /// <summary>
+    /// Expand all nodes their children aren't loaded yet
+    /// </summary>
+    public virtual void ExpandAllNotLoaded() => _expanded = new HashSet<TItem>(Items.Where(n => n.NeedsLoadChildren()).Recursive(n => n.Children ?? Enumerable.Empty<TItem>()).Where(n => n.NeedsLoadChildren()));
+
+    /// <summary>
     /// Collapse all nodes
     /// </summary>
     public virtual void CollapseAll() => _expanded.Clear();
@@ -340,7 +357,7 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
     /// <summary>
     /// Creates a context for the given item
     /// </summary>
-    protected virtual TreeViewItemContext<TItem> CreateContext(TItem item, string search, object tag = null)
+    protected virtual TreeViewItemContext<TItem> CreateContext(TItem item, string search = "", object tag = null)
     {
         return new TreeViewItemContext<TItem>(item, IsSelected(item), IsExpanded(item), IsFocused(item), search, this, tag, GetTermToHighlight(search));
     }
@@ -378,7 +395,7 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
     /// <summary>
     /// On node click
     /// </summary>
-    protected virtual void NodeClick(TItem node)
+    public virtual void NodeClick(TItem node)
     {
         if (IsSeparator(node))
             return;
@@ -386,7 +403,7 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
         ExecuteAutoExpand(node);
         if(IsAllowedToSelect(node))
             SelectedNode = node;
-        InvokeAsync(StateHasChanged);
+        Update();
     }
 
     /// <summary>
@@ -446,10 +463,16 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
     public virtual void SetExpanded(TItem context, bool expanded)
     {
         if (expanded && !IsExpanded(context))
+        {
             _expanded.Add(context);
+            if (context.NeedsLoadChildren() && (context is IAsyncHierarchical<TItem> asyncHierarchical)) 
+            {
+                asyncHierarchical.LoadChildren();
+            }
+        }
         else if (!expanded && IsExpanded(context))
             _expanded.Remove(context);
-        InvokeAsync(StateHasChanged);
+        Update();
     }
     
     /// <summary>
@@ -521,10 +544,11 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
     /// <summary>
     /// Style for main control
     /// </summary>
-    protected string StyleStr()
+    protected virtual string StyleStr(Action<MudExStyleBuilder> mergeWith = null)
     {
         return MudExStyleBuilder.FromStyle(Style)
             .WithBackground(BackgroundColor, BackgroundColor.IsSet())
+            .MergeWith(mergeWith)
             .ToString();
     }
 
@@ -546,6 +570,10 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
         _highlight = arg.Value;
     }
 
+    /// <summary>
+    /// returns the class for the toolbar
+    /// </summary>
+    /// <returns></returns>
     protected virtual string ToolBarClassStr()
     {
         return MudExCssBuilder.From(ToolBarClass)
@@ -553,6 +581,10 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
             .ToString();
     }
 
+    /// <summary>
+    /// Returns the style for the toolbar
+    /// </summary>
+    /// <returns></returns>
     protected virtual string ToolBarStyleStr()
     {
         return MudExStyleBuilder.FromStyle(ToolBarStyle)
@@ -560,5 +592,13 @@ public abstract partial class MudExTreeViewBase<TItem> : MudExBaseComponent<MudE
             .WithPaddingLeft(0)
             .WithPaddingRight(0)
             .ToString();
+    }
+
+    /// <summary>
+    /// Updates the state of the component
+    /// </summary>
+    public virtual void Update()
+    {
+        InvokeAsync(StateHasChanged);
     }
 }

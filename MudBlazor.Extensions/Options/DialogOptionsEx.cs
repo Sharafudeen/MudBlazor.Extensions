@@ -1,4 +1,5 @@
 ﻿using Microsoft.JSInterop;
+using MudBlazor.Extensions.Attribute;
 using MudBlazor.Extensions.Core;
 using MudBlazor.Extensions.Helper;
 using MudBlazor.Extensions.Helper.Internal;
@@ -26,6 +27,17 @@ namespace MudBlazor.Extensions.Options
         }
 
         internal DotNetObjectReference<object> DotNet { get; set; }
+
+        /// <summary>
+        /// If true the dialog will keep the max size constraints for resizing defined with <see cref="MaxHeight"/> and <see cref="MaxWidth"/>.
+        /// </summary>
+        public bool KeepMaxSizeConstraints { get; set; } = false;
+
+        /// <summary>
+        /// If true the dialog will keep the relations to the parent component.
+        /// That means sizes and positions will set to values in percentages.
+        /// </summary>
+        public bool KeepRelations { get; set; } = true;
 
         /// <summary>
         /// If true the dialog will be animated on close
@@ -107,6 +119,7 @@ namespace MudBlazor.Extensions.Options
         /// the .NET object reference where the <see cref="CanCloseCallbackName"/> is located.
         /// if you don't specify reference the dialog itself will be the reference.Then you need to have the CanCloseCallback Method on your DialogClass
         /// </summary>
+        [IgnoreOnObjectEdit]
         public DotNetObjectReference<object> CanCloseCallbackReference { get; set; }
 
 
@@ -153,7 +166,7 @@ namespace MudBlazor.Extensions.Options
         /// <summary>
         /// An array of animation type values indicating the set of animation effects of the dialog box.
         /// </summary>
-        public AnimationType[] Animations { get; set; }
+        public AnimationType[] Animations { get; set; } = { AnimationType.Default };
 
         /// <summary>
         /// An animation timing function value indicating the easing function used for the dialog box animation transitions.
@@ -208,5 +221,4 @@ namespace MudBlazor.Extensions.Options
         /// <returns>A cloned object instance of the current object.</returns>
         public object Clone() => MemberwiseClone();
     }
-
 }

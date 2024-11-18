@@ -6,9 +6,30 @@ namespace MainSample.WebAssembly.Types;
 
 public class NavigationEntry : Hierarchical<NavigationEntry>
 {
+    protected bool Equals(NavigationEntry other)
+    {
+        return Text == other.Text && Href == other.Href;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((NavigationEntry)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Text, Href);
+    }
+
     private Type _type;
 
-    public NavigationEntry(string text = "", string icon = "", string href = "", string target = "")
+    public NavigationEntry()
+    {}
+
+    public NavigationEntry(string text = "", string icon = "", string href = "", string target = "") : this()
     {
         Icon = icon;
         Text = text;

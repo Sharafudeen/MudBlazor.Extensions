@@ -1,7 +1,5 @@
-﻿@inherits MudPicker<string>
-@implements IMudExComponent
-@using MudBlazor.Extensions.Core
-@using System.Reflection;
+﻿@inherits MudExPickerBase<string>
+
 @using MudBlazor.Extensions.Core.Css
 @using MudBlazor.Extensions.Helper
 
@@ -16,7 +14,7 @@
 
     private RenderFragment GetPickerContent()
     {
-        return @<div class="@GetClass()" style="@(MudExStyleBuilder.Default.WithOverflow("hidden").WithPadding(30).WithWidth(PickerWidth).WithHeight(PickerHeight))">
+        return @<div class="@GetClass()" style="@(MudExStyleBuilder.Default.WithOverflow("hidden").WithPadding(30).WithWidth(PickerWidth, PickerWidth.HasValue && !PickerWidth.Value.IsZero()).WithHeight(PickerHeight))">
         <MudGrid Style="margin-bottom:25px;">
             <MudItem Style="width: 100%">
                 <MudText Style="margin-bottom: 15px; text-align: center;">@PropertyNameLabel</MudText>
@@ -26,7 +24,7 @@
             
         @if (!DisableList)
         {
-            <MudTextField @onmousedown="@OnMouseDown" Immediate="true" Variant="FilterVariant" Clearable="true" Placeholder="Search" @bind-Value="Filter" AdornmentIcon="@Icons.Material.Filled.Search"/>
+            <MudTextField @onmousedown="@OnMouseDown" Style="margin-left: 24px;margin-top: 10px;margin-bottom: 5px;" Immediate="true" Variant="FilterVariant" Clearable="true" Placeholder="@TryLocalize("Search")" @bind-Value="Filter" AdornmentIcon="@Icons.Material.Filled.Search" />
         }   
         </MudGrid>
         

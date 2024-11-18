@@ -133,13 +133,58 @@
         return el ? new MudExDomHelper(el) : null;
     }
 
-    static toAbsolute(element) {
+    static toRelative(element, useWindowAsReference = false) {
+
+        if (!element || !(element instanceof HTMLElement)) {
+            console.error("Das angegebene Element ist ungültig.");
+            return;
+        }
+
+        const parent = element.offsetParent;
+        const referenceWidth = useWindowAsReference || !parent ? window.innerWidth : parent.offsetWidth;
+        const referenceHeight = useWindowAsReference || !parent ? window.innerHeight : parent.offsetHeight;
+
+        if (!referenceWidth || !referenceHeight) {
+            console.warn("No reference to set relatives");
+            return;
+        }
+
+        const computedStyle = getComputedStyle(element);
+        const leftPx = parseFloat(computedStyle.left);
+        const topPx = parseFloat(computedStyle.top);
+        const widthPx = parseFloat(computedStyle.width);
+        const heightPx = parseFloat(computedStyle.height);
+
+        const leftPercent = (leftPx / referenceWidth) * 100;
+        const topPercent = (topPx / referenceHeight) * 100;
+        const widthPercent = (widthPx / referenceWidth) * 100;
+        const heightPercent = (heightPx / referenceHeight) * 100;
+
+        element.style.left = `${leftPercent}%`;
+        element.style.top = `${topPercent}%`;
+        
+        if (element.style.width && element.style.width !== 'auto') {
+            element.style.width = `${widthPercent}%`;
+        }
+        if (element.style.height && element.style.height !== 'auto') {
+            element.style.height = `${heightPercent}%`;
+        }
+
+    }
+
+    static toAbsolute(element, sizesAuto) {
         element.style.position = 'absolute';
         var rect = element.getBoundingClientRect();
         element.style.left = rect.left + "px";
         element.style.top = rect.top + "px";
-        element.style.width = rect.width + "px";
-        element.style.height = rect.height + "px";
+
+        if (sizesAuto) {
+            element.style.width = 'auto';
+           // element.style.height = 'auto';
+        } else {
+            element.style.width = rect.width + "px";
+           // element.style.height = rect.height + "px";
+        }
     }
 
     static ensureElementIsInScreenBounds(element) {
@@ -173,6 +218,64 @@
             element.style.top = (window.innerHeight - element.offsetHeight) + 'px';
         }
     }
+
+    static syncSize(main, target, options, callbackRef) {
+        options = options || { width: true, height: false, live: true, minWidth: 'auto' };
+        var mainEl = MudExObserver.getElement(main);
+        var sourceEl = MudExObserver.getElement(target);
+        mainEl = mainEl?.parentElement || mainEl;
+
+        if (!mainEl || !sourceEl) return;
+
+        var sourceRect = sourceEl.getBoundingClientRect();
+        //var computedStyle = window.getComputedStyle(sourceEl);
+        //var initialWidth = computedStyle.width;
+        //var initialHeight = computedStyle.height;
+        var initialWidth = sourceRect.width + 'px';
+        var initialHeight = sourceRect.height + 'px';
+
+        if (options.minWidth === 'auto') {
+            options.minWidth = initialWidth;
+        }
+        if (options.minHeight === 'auto') {
+            options.minHeight = initialHeight;
+        }
+
+        function updateSize() {
+            var rect = mainEl.getBoundingClientRect();
+            if (options.width) {
+                var width = rect.width;
+                sourceEl.style.width = width + 'px';
+                if (options.minWidth) {
+                    sourceEl.style.minWidth = options.minWidth;
+                }
+            }
+            if (options.height) {
+                var height = rect.height;
+                sourceEl.style.height = height + 'px';
+                if (options.minHeight) {
+                    sourceEl.style.minHeight = options.minHeight;
+                }
+            }
+            if (callbackRef) {
+                callbackRef.invokeMethodAsync('OnSyncResized', rect, null, null); // TODO: pass mainEl and sourceEl
+            }
+        }
+
+        updateSize();
+
+        if (options.live) {
+            var resizeObserver = new ResizeObserver(() => {
+                if (!mainEl.isConnected) {
+                    resizeObserver.disconnect();
+                    return;
+                }
+                updateSize();
+            });
+            resizeObserver.observe(mainEl);
+        }
+    }
+
     
 }
 

@@ -24,7 +24,7 @@
   <PropertyGroup>
     <MajorVersion>2</MajorVersion>
     <MinorVersion>0</MinorVersion>
-    <PatchVersion>6</PatchVersion>
+    <PatchVersion>8</PatchVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -69,18 +69,18 @@
   <ItemGroup>
     <PackageReference Include="ExcelDataReader" Version="3.7.0" />
     <PackageReference Include="ExcelDataReader.DataSet" Version="3.7.0" />
-    <PackageReference Include="AuralizeBlazor" Version="1.1.3" />
-    <PackageReference Include="MudBlazor.Markdown" Version="1.0.2" />
-    <PackageReference Include="Nextended.Blazor" Version="7.0.38" />
-    <PackageReference Include="Nextended.Core" Version="7.0.55" /> 
+    <PackageReference Include="AuralizeBlazor" Version="1.1.4" />
+    <PackageReference Include="MudBlazor.Markdown" Version="7.8.0" />
+    <PackageReference Include="Nextended.Blazor" Version="8.0.12" />
+    <PackageReference Include="Nextended.Core" Version="8.0.16" />
     <PackageReference Include="BlazorJS" Version="2.1.6" />
     <PackageReference Include="OneOf" Version="3.0.271" />
     <PackageReference Include="Blazored.FluentValidation" Version="2.2.0" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
-    <PackageReference Include="MudBlazor" Version="7.8.0" />
+    <PackageReference Include="MudBlazor" Version="7.15.0" />
     <PackageReference Include="BlazorParameterCastingMagic" Version="1.2.23060811" />
-    <PackageReference Include="SharpCompress" Version="0.37.2" />
+    <PackageReference Include="SharpCompress" Version="0.38.0" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
     <PackageReference Include="MetadataExtractor" Version="2.8.1" />
   </ItemGroup>
@@ -112,42 +112,6 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Components\MudExTaskBar.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Components\MudExMessageDialog.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Middleware\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="Components\MudExFileDisplayOfficeLive.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="wwwroot\css\_backgrounds.scss">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\css\mudExAppLoader.scss">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Components\MudExListItem.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Components\MudExSelectItem.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\css\components\_mudextreeview.scss" />
-  </ItemGroup>
 
   <!--<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="cd &quot;$(ProjectDir)\.scripts&quot;&#xD;&#xA;powershell -ExecutionPolicy Bypass -File &quot;copyMarkdown.ps1&quot;" />

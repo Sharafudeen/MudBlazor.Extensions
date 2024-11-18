@@ -19,6 +19,8 @@ public class TreeViewItemContext<T> : TreeItemData<T>
         string highlight = null)
     {
         Value = value;
+        if (Value is IAsyncHierarchical<T> asyncHierarchical)
+            asyncHierarchical.OnChildrenLoaded += Value_OnChildrenLoaded;
         Selected = selected;
         Expanded = expanded;
         Focused = focused;
@@ -28,7 +30,15 @@ public class TreeViewItemContext<T> : TreeItemData<T>
         Highlight = highlight;
     }
 
-    
+    private void Value_OnChildrenLoaded(IHierarchical<T> arg1, HashSet<T> arg2)
+    {
+        TreeView?.Update();
+    }
+
+    public bool NeedsLoadChildren => Value.NeedsLoadChildren();
+
+    public override bool HasChildren => Value?.HasChildren() ?? false;
+
     /// <summary>
     /// Is true if the item is focused.
     /// </summary>

@@ -196,6 +196,35 @@ public sealed class MudExStyleBuilder : IAsyncDisposable, IMudExStyleAppearance
     }
 
     /// <summary>
+    /// Merges the properties and values from the given Action with the current style string
+    /// </summary>
+    public MudExStyleBuilder MergeWith(Action<MudExStyleBuilder> mergeWith, bool when = true)
+    {
+        if (!when || mergeWith == null) return this;
+
+        mergeWith(this);
+        return MergeWith(this);
+
+    }
+
+    /// <summary>
+    /// Merges the properties and values from the given style string with the current style string
+    /// </summary>
+    public MudExStyleBuilder MergeWith(string style, bool when = true)
+    {
+        if (!when || string.IsNullOrWhiteSpace(style))
+            return this;
+
+        return FromStyle(CombineStyleStrings(Style, style));
+    }
+
+    /// <summary>
+    /// Merges the properties and values from the given styleBuilder with the current style string
+    /// </summary>
+    public MudExStyleBuilder MergeWith(MudExStyleBuilder style, bool when = true)
+        => MergeWith(style.Style, when);
+
+    /// <summary>
     /// Converts given object to a CSS style string and adds all properties and values to this builder
     /// </summary>
     /// <param name="styleObj">Object to convert to a CSS style string</param>
@@ -533,7 +562,7 @@ public sealed class MudExStyleBuilder : IAsyncDisposable, IMudExStyleAppearance
     /// </summary>
     public MudExStyleBuilder WithFlexFlow(MudBlazor.Extensions.Core.Css.FlexFlow flexFlow, bool when = true) => WithFlexFlow(flexFlow.GetDescription(), when);
 
-    
+
     /// <summary>
     /// Specifies the align-items property using a CSS string value, if the 'when' condition is true.
     /// </summary>
@@ -553,6 +582,14 @@ public sealed class MudExStyleBuilder : IAsyncDisposable, IMudExStyleAppearance
     /// Specifies the position property using a CSS string value, if the 'when' condition is true.
     /// </summary>
     public MudExStyleBuilder WithPosition(MudBlazor.Extensions.Core.Css.Position position, bool when = true) => WithPosition(position.GetDescription(), when);
+
+    /// <summary>
+    /// Specifies the position property using a CSS string value, if the 'when' condition is true.
+    /// </summary>
+    public MudExStyleBuilder WithPosition(MudExPosition position, bool when = true) => 
+        WithPosition(Core.Css.Position.Absolute, when)
+        .WithLeft(position.Left, when)
+        .WithTop(position.Top, when);
 
     /// <summary>
     /// Specifies the top property using a CSS string value, if the 'when' condition is true.

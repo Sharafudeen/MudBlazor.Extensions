@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
 using MudBlazor.Extensions.Core;
+using MudBlazor.Extensions.Core.W3C;
 using Nextended.Core.Attributes;
 
 namespace MudBlazor.Extensions.Services
@@ -11,10 +12,12 @@ namespace MudBlazor.Extensions.Services
     {
         private readonly IJSRuntime _jsRuntime;
         private readonly ConcurrentBag<string> _recordings = new();
+        private readonly MudExCaptureNotificationService _captureNotifier;
 
-        public MudExSpeechRecognitionService(IJSRuntime jsRuntime)
+        public MudExSpeechRecognitionService(IJSRuntime jsRuntime, MudExCaptureNotificationService captureNotifier)
         {
             _jsRuntime = jsRuntime;
+            _captureNotifier = captureNotifier;
         }
 
         public async ValueTask DisposeAsync()
@@ -24,13 +27,18 @@ namespace MudBlazor.Extensions.Services
 
         public async Task<string> StartRecordingAsync(SpeechRecognitionOptions options, Action<SpeechRecognitionResult> callback, Action<string> stoppedCallback = null)
         {
-            var callbackReference = DotNetObjectReference.Create(new CallbackWrapper(callback, s =>
+            var callbackReference = DotNetObjectReference.Create(new JsRecordingCallbackWrapper<SpeechRecognitionResult>(callback, s =>
             {
                 _recordings.TryTake(out s);
+                _captureNotifier.RemoveRecordingInfo(s);
                 stoppedCallback?.Invoke(s);
             }));
             var result = await _jsRuntime.InvokeAsync<string>("MudExSpeechRecognition.startRecording", options, callbackReference);
             _recordings.Add(result);
+            if (options.MaxCaptureTime is { TotalSeconds: > 0 })
+                _ = Task.Delay(options.MaxCaptureTime.Value).ContinueWith(_ => StopRecordingAsync(result));
+            if (options.ShowNotificationWhileRecording)
+                _captureNotifier.ShowRecordingInfo(result, options.MaxCaptureTime, (s, _) => StopRecordingAsync(s));
             return result;
         }
 
@@ -41,28 +49,6 @@ namespace MudBlazor.Extensions.Services
         public Task StopAllRecordingsAsync() => _jsRuntime.InvokeVoidAsync("MudExSpeechRecognition.stopAllRecordings").AsTask();
         public Task<IEnumerable<AudioDevice>> GetAudioDevicesAsync() => _jsRuntime.InvokeAsync<IEnumerable<AudioDevice>>("MudExSpeechRecognition.getAvailableAudioDevices").AsTask();
 
-        private class CallbackWrapper
-        {
-            private readonly Action<SpeechRecognitionResult> _callback;
-            private readonly Action<string> _stoppedCallback;
 
-            public CallbackWrapper(Action<SpeechRecognitionResult> callback, Action<string> stoppedCallback = null)
-            {
-                _callback = callback;
-                _stoppedCallback = stoppedCallback;
-            }
-
-            [JSInvokable]
-            public void OnStopped(string id)
-            {
-                _stoppedCallback?.Invoke(id);
-            }
-
-            [JSInvokable]
-            public void Invoke(SpeechRecognitionResult result)
-            {
-                _callback.Invoke(result);
-            }
-        }
     }
 }

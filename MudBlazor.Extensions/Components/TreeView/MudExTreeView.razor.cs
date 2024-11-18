@@ -17,6 +17,12 @@ public partial class MudExTreeView<T>
     where T : IHierarchical<T>
 {
     private TreeViewMode _viewMode = TreeViewMode.Horizontal;
+    private DynamicComponent _renderedTree;
+
+    /// <summary>
+    /// Inner component that renders the tree.
+    /// </summary>
+    public MudExTreeViewBase<T> RenderedTreeComponent => _renderedTree?.Instance as MudExTreeViewBase<T>;
 
     /// <summary>
     /// Mode controls how the tree view will be rendered.
@@ -47,6 +53,51 @@ public partial class MudExTreeView<T>
     /// Parameters for the component based on ViewMode. 
     /// </summary>
     [Parameter] public IDictionary<string, object> Parameters { get; set; }
+
+    #region Delegating methods
+
+    /// <inheritdoc />
+    public override void ExpandAll()
+    {
+        RenderedTreeComponent?.ExpandAll();
+        base.ExpandAll();
+    }
+
+    /// <inheritdoc />
+    public override void ExpandAllLoaded()
+    {
+        RenderedTreeComponent?.ExpandAllLoaded();
+        base.ExpandAllLoaded();
+    }
+
+    /// <inheritdoc />
+    public override void ExpandAllNotLoaded()
+    {
+        RenderedTreeComponent?.ExpandAllNotLoaded();
+        base.ExpandAllNotLoaded();
+    }
+
+    /// <inheritdoc />
+    public override void ToggleExpand(T node)
+    {
+        RenderedTreeComponent?.ToggleExpand(node);
+        base.ToggleExpand(node);
+    }
+
+    /// <inheritdoc />
+    public override void SetExpanded(T context, bool expanded)
+    {
+        RenderedTreeComponent?.SetExpanded(context, expanded);
+        base.SetExpanded(context, expanded);
+    }
+
+    /// <inheritdoc />
+    public override void Update()
+    {
+        RenderedTreeComponent?.Update();
+    }
+
+    #endregion
 
 
     private Type GetComponentForViewMode()

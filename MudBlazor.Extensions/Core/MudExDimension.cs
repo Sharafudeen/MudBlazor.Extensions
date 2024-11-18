@@ -60,4 +60,14 @@ public struct MudExDimension
 
     /// <inheritdoc />
     public override string ToString() => $"{Width}x{Height}";
+
+    public MudExDimension ToAbsolute(MudExDimension reference)
+    {
+        return new MudExDimension(Width.ToAbsolute(reference.Width), Height.ToAbsolute(reference.Height));
+    }
+
+    public MudExDimension ToRelative(MudExDimension reference)
+    {
+        return new MudExDimension(Width.ToRelative(reference.Width), Height.ToRelative(reference.Height));
+    }
 }

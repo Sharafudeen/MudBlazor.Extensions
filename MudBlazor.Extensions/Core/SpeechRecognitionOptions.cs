@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Text.Json.Serialization;
+using MudBlazor.Extensions.Core.W3C;
 
 namespace MudBlazor.Extensions.Core;
 
@@ -22,9 +23,19 @@ public class SpeechRecognitionOptions
     }
 
     /// <summary>
+    /// If set, the recording will stop after the specified time.
+    /// </summary>
+    public TimeSpan? MaxCaptureTime { get; set; }
+
+    /// <summary>
+    /// If this is true a notification toast will be shown while recording.
+    /// </summary>
+    public bool ShowNotificationWhileRecording { get; set; }
+
+    /// <summary>
     /// DeviceId for audio input, used for selecting the appropriate microphone.
     /// </summary>
-    public string DeviceId { get; set; }
+    public AudioDevice Device { get; set; }
 
     /// <summary>
     /// Language code used for speech recognition, corresponding to the specific culture.

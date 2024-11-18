@@ -1,4 +1,5 @@
 ﻿using MudBlazor.Extensions.Attribute;
+using MudBlazor.Extensions.Core.W3C;
 
 namespace MudBlazor.Extensions.Core;
 
@@ -42,13 +43,4 @@ public interface ISpeechRecognitionService : IAsyncDisposable
     /// Returns a collection of available audio devices for input.
     /// </summary>
     Task<IEnumerable<AudioDevice>> GetAudioDevicesAsync();
-}
-
-public class AudioDevice
-{
-    public string DeviceId { get; set; }
-    public string GroupId { get; set; }
-    public string Label { get; set; }
-
-    public override string ToString() => Label;
 }

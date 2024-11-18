@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.CompilerServices;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
 using MudBlazor.Extensions.Components.ObjectEdit.Options;
 using MudBlazor.Extensions.Core;
@@ -12,6 +13,7 @@ using MudBlazor.Extensions.Helper;
 using MudBlazor.Extensions.Helper.Internal;
 using MudBlazor.Extensions.Options;
 using Newtonsoft.Json;
+using Nextended.Blazor.Helper;
 using Nextended.Blazor.Models;
 using Nextended.Core;
 using Nextended.Core.Extensions;
@@ -33,9 +35,25 @@ public partial class MudExObjectEdit<T>
     private bool _restoreCalled;
     private T _value;
     private List<MudExpansionPanel> _groups = new();
+    private Type? _registeredEditorType;
 
     /// <summary>
-    /// Is true if currently is a internal Bulk running. Like reset or clear etc..
+    /// If this is set all properties will be readonly depending on the value otherwise the property settings for meta configuration will be used
+    /// </summary>
+    [Parameter] public bool? ReadOnlyOverwrite { get; set; }
+
+    /// <summary>
+    /// If this is true only one group can be expanded at a time other groups will be collapsed
+    /// </summary>
+    [Parameter] public bool SingleExpand { get; set; }
+
+    /// <summary>
+    /// Returns true if we have a registration for the current object that then uses the registered component
+    /// </summary>
+    protected bool HasRegistrationForWholeObject => RenderWithType != null;
+    
+    /// <summary>
+    /// Is true if currently is an internal Bulk running. Like reset or clear etc.
     /// </summary>
     protected bool IsInternalLoading;
     
@@ -49,6 +67,24 @@ public partial class MudExObjectEdit<T>
     /// </summary>
     protected bool Primitive => IsPrimitive();
 
+    /// <summary>
+    /// Returns the type of the registered editor if available
+    /// </summary>
+    protected Type? RenderWithType
+    {
+        get
+        {
+            if (_registeredEditorType != null)
+                return _registeredEditorType;
+            var editor = ServiceProvider.GetService<IObjectEditorFor<T>>();
+            if (editor != null)
+                _registeredEditorType = editor.GetType();
+
+            // TODO: Think about more other ways to register an editor
+
+            return _registeredEditorType;
+        }
+    }
 
     #region Parameters
 
@@ -255,6 +291,11 @@ public partial class MudExObjectEdit<T>
     /// Whether the toolbar should be sticky to the top of the component.
     /// </summary>
     [Parameter] public bool StickyToolbar { get; set; }
+
+    /// <summary>
+    /// If false the toolbar will be hidden
+    /// </summary>
+    [Parameter] public bool ShowToolbar { get; set; } = true;
 
     /// <summary>
     /// The positioning CSS value for a sticky toolbar.
@@ -533,6 +574,7 @@ public partial class MudExObjectEdit<T>
 
     #endregion
 
+
     /// <summary>
     /// Returns the current value independent of disabled value bindings
     /// </summary>
@@ -677,8 +719,15 @@ public partial class MudExObjectEdit<T>
         await ValueChanged.InvokeAsync(Value);
         if (Value is IComponent c)
         {
-            var parameters = ParameterView.FromDictionary(new Dictionary<string, object> { { property.PropertyName, property.Value } });
-            await c.SetParametersAsync(parameters);
+            try
+            {
+                var parameters = ParameterView.FromDictionary(new Dictionary<string, object> { { property.PropertyName, property.Value } });
+                await c.SetParametersAsync(parameters);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 
@@ -833,10 +882,29 @@ public partial class MudExObjectEdit<T>
         return res;
     }
 
+    private void GroupExpandedChange(string groupId, bool expanded)
+    {
+        if (expanded && SingleExpand)
+            _groups.Where(g => g.Tag?.ToString() != groupId).Apply(g => g.CollapseAsync());
+    }
+
+    //private bool GetIsExpanded(string groupId)
+    //{
+    //    var existing = _groups.FirstOrDefault(g => g.Tag?.ToString() == groupId);
+    //    if (existing != null)
+    //        return existing.Expanded;
+    //    if (SingleExpand && GroupsCollapsible && _groups.Any(p => p.Expanded))
+    //        return false;
+    //    return true;
+    //}
+
     private Task ExpandCollapse()
     {
-        var collapse = _groups[0].Expanded;
-        return Task.WhenAll(_groups.Select(g => collapse ? g.CollapseAsync() : g.ExpandAsync()));
+        _groups.ForEach(g =>
+        {
+            g.ToggleExpansionAsync();
+        });
+        return Task.CompletedTask;
     }
 
     private IDictionary<string, object> GetAttributesForPrimitive()
@@ -848,6 +916,8 @@ public partial class MudExObjectEdit<T>
                    where attr != null && !ignore.Contains(prop.Name) && prop.CanWrite
                    select prop).ToDictionary(prop => prop.Name, prop => prop.GetValue(this));
         var primitiveWrapper = new ModelForPrimitive<T>(Value);
+        if (ReadOnlyOverwrite.HasValue)
+            res.AddOrUpdate(nameof(MudBaseInput<object>.ReadOnly), ReadOnlyOverwrite.Value);
         res.AddOrUpdate(nameof(Primitive), false);
         res.AddOrUpdate(nameof(Value), primitiveWrapper);
         res.AddOrUpdate(nameof(ValueChanged), RuntimeHelpers.TypeCheck(
@@ -865,6 +935,36 @@ public partial class MudExObjectEdit<T>
         ));
 
         return res;
+    }
+    
+    private IDictionary<string, object> GetCompatibleParameters(Type componentType)
+    {
+        var res = ComponentRenderHelper.GetCompatibleParameters(this, componentType)
+            .Where(p => IsOverwritten(p.Key)).ToDictionary(p => p.Key, p => p.Value);
+        
+        foreach (var parameter in UserAttributes.Where(parameter => ComponentRenderHelper.IsValidParameter(componentType, parameter.Key, parameter.Value)))
+        {
+            res.AddOrUpdate(parameter.Key, parameter.Value);
+        }
+
+        if(ReadOnlyOverwrite.HasValue)
+            res.AddOrUpdate(nameof(MudBaseInput<object>.ReadOnly), ReadOnlyOverwrite.Value);
+        res.AddOrUpdate(nameof(Value), Value);
+        res.AddOrUpdate(nameof(ValueChanged), RuntimeHelpers.TypeCheck(
+            EventCallback.Factory.Create(
+                this,
+                EventCallback.Factory.CreateInferred(
+                    this, x =>
+                    {
+                        Value = x;
+                        ValueChanged.InvokeAsync(Value);
+                    },
+                    Value
+                )
+            )
+        ));
+
+        return res.Where(pair => ComponentRenderHelper.IsValidParameter(componentType, pair.Key, pair.Value)).ToDictionary(p => p.Key, p => p.Value);
     }
 
     /// <summary>

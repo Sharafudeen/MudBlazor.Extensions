@@ -1,10 +1,15 @@
-﻿using System.Globalization;
+﻿using System.Collections;
+using System.Globalization;
 using System.Linq.Expressions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.JSInterop;
 using MudBlazor.Extensions.Core;
+using MudBlazor.Extensions.Core.W3C;
 using MudBlazor.Extensions.Helper;
+using MudBlazor.Extensions.Options;
 using MudBlazor.Utilities;
 using Nextended.Core.Extensions;
+using Nextended.Core.Helper;
 
 namespace MudBlazor.Extensions.Components.ObjectEdit.Options;
 
@@ -33,8 +38,9 @@ public static class RenderDataDefaults
     /// <summary>
     /// Adds a default render data providers to the list of providers.
     /// </summary>
-    public static void AddRenderDataProvider(params IDefaultRenderDataProvider[] provider) => Providers.AddRange(provider.EmptyIfNull());
-    
+    public static void AddRenderDataProvider(params IDefaultRenderDataProvider[] provider) 
+        => Providers.AddRange(provider.EmptyIfNull().Where(p => !Providers.Contains(p)));
+
     /// <summary>
     /// Removes a default render data providers from the list of providers.
     /// </summary>
@@ -48,6 +54,12 @@ public static class RenderDataDefaults
         RegisterDefault<decimal, MudNumericField<decimal>>(f => f.Value);
         RegisterDefault<double, MudNumericField<double>>(f => f.Value);
         RegisterDefault<float, MudNumericField<float>>(f => f.Value);
+
+        RegisterDefault<int?, MudNumericField<int?>>(f => f.Value, field => { field.Clearable = true; });
+        RegisterDefault<decimal?, MudNumericField<decimal?>>(f => f.Value, field => { field.Clearable = true; });
+        RegisterDefault<double?, MudNumericField<double?>>(f => f.Value, field => { field.Clearable = true; });
+        RegisterDefault<float?, MudNumericField<float?>>(f => f.Value, field => { field.Clearable = true; });
+
 
         RegisterDefault<DateTime?, MudDatePicker>(f => f.Date, DatePickerOptions(true));
         RegisterDefault<DateTime, DateTime?, MudDatePicker>(f => f.Date, DatePickerOptions(false));
@@ -89,7 +101,79 @@ public static class RenderDataDefaults
         RegisterDefault<IList<UploadableFile>, MudExUploadEdit<UploadableFile>>(edit => edit.UploadRequests);
         RegisterDefault<UploadableFile, MudExUploadEdit<UploadableFile>>(edit => edit.UploadRequest, edit => edit.AllowMultiple = false);
 
+
+        RegisterDefault<DialogOptionsEx, MudExObjectEditPicker<DialogOptionsEx>>(picker =>
+        {
+            picker.DialogOptions = DialogOptionsEx.DefaultDialogOptions.CloneOptions().SetProperties(o => o.Resizeable = true);
+            picker.PickerVariant = PickerVariant.Dialog;
+        });
+
+        RegisterAsSelection<VideoDevice>(select => select.AvailableItemsLoadFunc = LoadFromJsFunc<VideoDevice>("MudExCapture.getAvailableVideoDevices"));
+        RegisterAsSelection<AudioDevice>(select => select.AvailableItemsLoadFunc = LoadFromJsFunc<AudioDevice>("MudExCapture.getAvailableAudioDevices"));
+        
+        RegisterAsMultiSelection<VideoDevice, List<VideoDevice>>(list => list, items => items.ToList(),
+            select =>
+            {
+                select.MultiSelection = true;
+                select.AvailableItemsLoadFunc = LoadFromJsFunc<VideoDevice>("MudExCapture.getAvailableVideoDevices");
+            });
+        RegisterAsMultiSelection<VideoDevice, IList<VideoDevice>>(list => list, items => items.ToList(),
+            select =>
+            {
+                select.MultiSelection = true;
+                select.AvailableItemsLoadFunc = LoadFromJsFunc<VideoDevice>("MudExCapture.getAvailableVideoDevices");
+            });
+        RegisterAsMultiSelection<VideoDevice, VideoDevice[]>(list => list, items => items.ToArray(),
+            select =>
+            {
+                select.MultiSelection = true;
+                select.AvailableItemsLoadFunc = LoadFromJsFunc<VideoDevice>("MudExCapture.getAvailableVideoDevices");
+            });
+
+        RegisterAsMultiSelection<AudioDevice, List<AudioDevice>>(list => list, items => items.ToList(),
+            select =>
+            {
+                select.MultiSelection = true;
+                select.AvailableItemsLoadFunc = LoadFromJsFunc<AudioDevice>("MudExCapture.getAvailableAudioDevices");
+            });
+        RegisterAsMultiSelection<AudioDevice, IList<AudioDevice>>(list => list, items => items.ToList(),
+            select =>
+            {
+                select.MultiSelection = true;
+                select.AvailableItemsLoadFunc = LoadFromJsFunc<AudioDevice>("MudExCapture.getAvailableAudioDevices");
+            });
+        RegisterAsMultiSelection<AudioDevice, AudioDevice[]>(list => list, items => items.ToArray(),
+            select =>
+            {
+                select.MultiSelection = true;
+                select.AvailableItemsLoadFunc = LoadFromJsFunc<AudioDevice>("MudExCapture.getAvailableAudioDevices");
+            });
     }
+
+    public static Func<CancellationToken, Task<IList<T>>> LoadFromJsFunc<T>(string identifier, IJSRuntime js = null) 
+        => token => (js ?? JsImportHelper.GetInitializedJsRuntime()).InvokeAsync<IList<T>>(identifier, token, null).AsTask();
+
+    public static void RegisterAsSelection<T>(Action<MudExSelect<T>> configure) {
+        RegisterDefault(s => s.Value, configure);
+    }
+
+    public static void RegisterAsMultiSelection<TItem, TCollection>(
+        Func<TCollection, IEnumerable<TItem>> toEnumerable,
+        Func<IEnumerable<TItem>, TCollection> toCollection,
+        Action<MudExSelect<TItem>> configure)
+    {
+        RegisterDefault<TCollection, IEnumerable<TItem>, MudExSelect<TItem>>(
+            s => s.SelectedValues,
+            s =>
+            {
+                s.ValuePresenter = ValuePresenter.Chip;
+                configure?.Invoke(s);
+            },
+            toEnumerable,
+            toCollection);
+    }
+
+
 
     /// <summary>
     /// Registers the MudExColorEdit component for various color types.
@@ -144,7 +228,7 @@ public static class RenderDataDefaults
     private static Dictionary<string, object> TimePickerOptions()
     {
         var currentCulture = CultureInfo.CurrentCulture;
-        var timeFormat = currentCulture.DateTimeFormat.ShortTimePattern;
+        var timeFormat = currentCulture.DateTimeFormat.LongTimePattern;
         return new Dictionary<string, object>
         {
             {nameof(MudTimePicker.Editable), true},
@@ -325,5 +409,16 @@ public static class RenderDataDefaults
     }
 
     private static IRenderData FindFromProvider(ObjectEditPropertyMeta propertyMeta)
-        => Providers.Select(provider => provider.GetRenderData(propertyMeta)).FirstOrDefault(renderData => renderData != null);
+    {
+        return Providers.Where( p => ProviderIsValidFor(p, propertyMeta))
+            .Select(provider => provider.GetRenderData(propertyMeta))
+            .FirstOrDefault(renderData => renderData != null);
+    }
+
+    private static bool ProviderIsValidFor(IDefaultRenderDataProvider defaultRenderDataProvider, ObjectEditPropertyMeta propertyMeta)
+    {
+        var providerType = defaultRenderDataProvider.GetType();
+        return providerType.ImplementsInterface(typeof(IDefaultRenderDataProviderFor<>).MakeGenericType(propertyMeta.PropertyInfo.PropertyType)) 
+               || !providerType.GetInterfaces().Any(p => p.IsGenericType && p.GetGenericTypeDefinition() == typeof(IDefaultRenderDataProviderFor<>));
+    }
 }

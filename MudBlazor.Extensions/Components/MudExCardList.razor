@@ -1,24 +1,34 @@
 ﻿@inherits MudBaseBindableItemsControl<MudItem, TData>
-@using Microsoft.AspNetCore.Components.Rendering
-@using Nextended.Core.Extensions
 @typeparam TData
 
 
 <div @ref="ElementReference" class="@GetCss()" style="@($"{GetStyle()}")">
-    <div style="@($"gap:{Spacing}px; justify-content: {Justify.ToDescriptionString()}")" class="@($"mud-ex-cards mud-ex-cards-{_id}")">
-        @if (ItemsSource == null)
+    <div style="@($"gap:{Spacing}px; height: 100%; max-height: inherit; justify-content: {Justify.ToDescriptionString()}")" class="@($"mud-ex-cards mud-ex-cards-{_id}")">
+        @if (ChildContent != null)
         {
             @ChildContent
         }
-        else
+        @if (ItemsSource?.Any() == true)
         {
             foreach (TData item in ItemsSource)
             {
-                <div class="mud-ex-card">
-                    @ItemTemplate(item)
-                </div>
+                <MudExVirtualItem Virtualize="@Virtualize"
+                                  Class="mud-ex-card">
+                    @if (ItemTemplate != null)
+                    {
+                        @ItemTemplate(item)
+                    }
+                    else
+                    {
+                        <MudCard Style="height: 100%">
+                        <MudCardHeader>
+                            <p>@item?.ToString()</p>
+                        </MudCardHeader>
+                        </MudCard>
+                    }
+                </MudExVirtualItem>
             }
         }
-        
+
     </div>
 </div>
