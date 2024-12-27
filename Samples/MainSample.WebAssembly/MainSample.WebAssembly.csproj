@@ -16,7 +16,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.10" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.10" />
     <PackageReference Include="BlazorMonaco" Version="3.2.0" />
-    <PackageReference Condition="'$(Configuration)' == 'Release'" Include="MudBlazor.Extensions" Version="*-*" />
+    <!--<PackageReference Condition="'$(Configuration)' == 'Release'" Include="MudBlazor.Extensions" Version="*-*" />-->
+    <PackageReference Condition="'$(Configuration)' == 'Release'" Include="MudBlazor.Extensions" Version="2.*-*" />
     <PackageReference Condition="'$(Configuration)' == 'Release'" Include="MudExObjectEdit.CodeGatorAdapter" Version="*-*" />
   </ItemGroup>
 
@@ -28,23 +29,5 @@
   <ItemGroup>
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="Pages\Page_CardList_Combined.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Pages\Page_GroupBox.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Pages\Page_SimpleDialog.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Pages\Page_MudExThemeEdit.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Pages\Page_Capture.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-  </ItemGroup>
-
+  
 </Project>

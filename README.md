@@ -24,7 +24,9 @@ It's important to note that this package requires a MudBlazor project and the re
 <!---
 [Running Sample Application (Github Pages)](https://fgilde.github.io/MudBlazor.Extensions/sample/wwwroot/)
 -->
+<!---
 ![Alt](https://repobeats.axiom.co/api/embed/d1dbd5b5469b639723e0fc094a8408628d2487af.svg "Repobeats analytics image")
+-->
 
 ## Table of Contents
 - [Installation](#installation)
@@ -88,8 +90,8 @@ builder.Services.AddMudServicesWithExtensions(c =>
 
 if your are running on Blazor Server side, you should also use the `MudBlazorExtensionMiddleware` you can do this in your startup or program.cs by adding the following line on your WebApplication:
 
-```
-    app.UseMudExtensions();
+```    
+    app.Use(MudExWebApp.MudExMiddleware);
 ```
 
 (Optional) if you have problems with automatic loaded styles you can also load the styles manually by adding the following line to your `index.html` or `_Host.cshtml`
@@ -387,7 +389,14 @@ MudBlazor.Extensions is released under the MIT License. See the bundled LICENSE 
 Latest Changes: 
 <!-- CHANGELOG:START -->
 <!-- Copied from CHANGELOG.md on 2024-09-23 15:35:55 -->
-- 2.0.7 > Update MudBlazor to 7.15.0
+ - 2.1.0 > MudExObject now supports default focused element within the meta configuration with `meta.Property(m => m.LastName).WithDefaultFocus()`
+ - 2.1.0 > MudExObject edit now has AutoFocus for first input field if no other focus is configured
+ - 2.1.0 > Provide a Middleware again without deprecated UseMudExtensions now you should use `app.Use(MudExWebApp.MudExMiddleware);`
+ - 2.1.0 > Fix another bug with dialog that only occurs on webassembly projects hosted in a .net8 runtime
+ - 2.0.9 > Fix bug with dialog animations on server side rendered projects #112
+ - 2.0.8 > Ensure dialog initial relative state if configured
+ - 2.0.8 > Fix Remove Item Bug in Collection editor 
+ - 2.0.7 > Update MudBlazor to 7.15.0
  - 2.0.7 > For the MudExObjectEdit you can now easially register a component as editor for a specific type [see here how you can register your component as editor for a type](https://www.mudex.org/d/ObjectEditRegisterComponent)
  - 2.0.7 > **_Breaking:_** The DailogOptionsEx class has a new Property `KeepRelations`. this is true by default and ensures positions and sizes are in relative percentage values. With this a dialog stays in the same position and size relative to the screen size. If you want to have a dialog with fixed sizes and positions you can set this to false and return to the old behaviour. 
  - 2.0.7 > The DailogOptionsEx class has a new Property `KeepMaxSizeConstraints`. if this is is true then the max width and max height while resizing is limited to initial MaxWidth or MaxHeight property values. 

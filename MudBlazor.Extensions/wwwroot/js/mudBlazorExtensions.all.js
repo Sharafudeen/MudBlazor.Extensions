@@ -1991,7 +1991,10 @@ class MudExDialogHandler extends MudExDialogHandlerBase {
             dialog.__extended = true;
             dialog.setAttribute('data-mud-extended', true);
             dialog.classList.add('mud-ex-dialog');
-            this.handleAll(dialog);            
+            this.handleAll(dialog);           
+            this.awaitAnimation(() => {
+                window.MudBlazorExtensions.focusAllAutoFocusElements();
+            });
             if (this.onDone) this.onDone();
         }, 50);
     }
@@ -2302,6 +2305,7 @@ class MudExDialogResizeHandler extends MudExDialogHandlerBase {
 
     checkResizeable() {
         MudExDomHelper.toAbsolute(this.dialog, false);
+        this.setRelativeIf();
         if (this.options.resizeable) {
             this.resizeObserver.observe(this.dialog);
             this.dialog.style['resize'] = 'both';
@@ -2465,9 +2469,27 @@ window.MudBlazorExtensions = {
                 MudExDialogNoModalHandler.bringToFront(dialog, true);
             }
         }
+    },
+
+    focusAllAutoFocusElements: function () {
+        const elements = document.querySelectorAll('[data-auto-focus="true"]');
+        elements.forEach(element => {
+            element.removeAttribute('data-auto-focus');
+            (window.__originalBlazorFocusMethod || window.Blazor._internal.domWrapper.focus)(element);
+        });
     }
 
 
 };
 
 window.MudBlazorExtensions.__bindEvents();
+
+(function () {
+    if (window.__originalBlazorFocusMethod)
+        return;
+    window.__originalBlazorFocusMethod = window.Blazor._internal.domWrapper.focus;
+    Blazor._internal.domWrapper.focus = function (element, preventScroll) {
+        element.setAttribute('data-auto-focus', 'true');
+        window.__originalBlazorFocusMethod(element, preventScroll);
+    };
+})();
