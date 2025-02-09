@@ -10,7 +10,7 @@ namespace MudBlazor.Extensions.Core.Capture;
 /// </summary>
 public class CaptureOptions
 {
-    private List<AudioDevice> _audioDevices = new();
+    private List<AudioConstraints> _audioDevices = new();
 
     /// <summary>
     /// If this is true a notification toast will be shown while recording.
@@ -59,12 +59,12 @@ public class CaptureOptions
     /// <summary>
     /// The video device to record.
     /// </summary>
-    public VideoDevice VideoDevice { get; set; }
+    public VideoConstraints VideoDevice { get; set; }
 
     /// <summary>
-    /// The audio device ids to record audio.
+    /// The audio devices to record audio.
     /// </summary>
-    public List<AudioDevice> AudioDevices
+    public List<AudioConstraints> AudioDevices
     {
         get => _audioDevices;
         set => _audioDevices = value;
@@ -89,7 +89,7 @@ public class CaptureOptions
     /// <summary>
     /// Size of the overlay.
     /// </summary>
-    public MudExDimension OverlaySize { get; set; } = new("20%", "20%");
+    public MudExDimension OverlaySize { get; set; } = new("20%", "20%"); // TODO: Support video constraints for overlay size
 
     /// <summary>
     /// For the Overlay you can set <see cref="OverlayPosition"/> to <see cref="DialogPosition.Custom"/> and set the custom position for the overlay here.
@@ -145,32 +145,32 @@ public class CaptureOptions
     /// <summary>
     /// Creates a new instance of <see cref="CaptureOptions"/> setting to capture the camera only.
     /// </summary>
-    public static CaptureOptions CameraOnly => new() { VideoDevice = VideoDevice.Default };
+    public static CaptureOptions CameraOnly => new() { VideoDevice = W3C.VideoDevice.Default.ToConstraints() };
 
     /// <summary>
     /// Creates a new instance of <see cref="CaptureOptions"/> setting to capture audio only.
     /// </summary>
-    public static CaptureOptions AudioOnly => new() { AudioDevices = new List<AudioDevice> { AudioDevice.Default } };
+    public static CaptureOptions AudioOnly => new() { AudioDevices = new List<AudioConstraints> { AudioDevice.Default.ToConstraints() } };
 
     /// <summary>
     /// Creates a new instance of <see cref="CaptureOptions"/> setting to capture the screen and camera.
     /// </summary>
-    public static CaptureOptions ScreenAndCamera => new() { CaptureScreen = true, VideoDevice = VideoDevice.Default };
+    public static CaptureOptions ScreenAndCamera => new() { CaptureScreen = true, VideoDevice = W3C.VideoDevice.Default.ToConstraints() };
 
     /// <summary>
     /// Creates a new instance of <see cref="CaptureOptions"/> setting to capture the screen and audio.
     /// </summary>
-    public static CaptureOptions ScreenAndAudio => new() { CaptureScreen = true, AudioDevices = new List<AudioDevice> { AudioDevice.Default } };
+    public static CaptureOptions ScreenAndAudio => new() { CaptureScreen = true, AudioDevices = new List<AudioConstraints> { AudioDevice.Default.ToConstraints() } };
 
     /// <summary>
     /// Creates a new instance of <see cref="CaptureOptions"/> setting to capture the camera and audio.
     /// </summary>
-    public static CaptureOptions CameraAndAudio => new() { VideoDevice = VideoDevice.Default, AudioDevices = new List<AudioDevice> { AudioDevice.Default } };
+    public static CaptureOptions CameraAndAudio => new() { VideoDevice = W3C.VideoDevice.Default.ToConstraints(), AudioDevices = new List<AudioConstraints> { AudioDevice.Default.ToConstraints() } };
 
     /// <summary>
     /// Creates a new instance of <see cref="CaptureOptions"/> setting to capture the screen, camera and audio.
     /// </summary>
-    public static CaptureOptions ScreenCameraAndAudio => new() { CaptureScreen = true, VideoDevice = VideoDevice.Default, AudioDevices = new List<AudioDevice> { AudioDevice.Default } };
+    public static CaptureOptions ScreenCameraAndAudio => new() { CaptureScreen = true, VideoDevice = W3C.VideoDevice.Default.ToConstraints(), AudioDevices = new List<AudioConstraints> { AudioDevice.Default.ToConstraints() } };
 
     /// <summary>
     /// Creates a new instance of <see cref="CaptureOptions"/> setting to capture the screen and camera with the screen as overlay over the camera.
