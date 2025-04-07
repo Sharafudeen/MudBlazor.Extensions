@@ -1618,6 +1618,16 @@
             Style for the code view container
             </summary>
         </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCodeView.ShowCopyToast">
+            <summary>
+            If this is true, a toast is shown when the code is copied
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCodeView.OnCodeCopied">
+            <summary>
+            Is raised when the code is copied
+            </summary>
+        </member>
         <member name="P:MudBlazor.Extensions.Components.MudExCodeView.DockedMinWidthLeft">
             <summary>
             MinWidth for the left docked panel when split view is used
@@ -1661,6 +1671,11 @@
         <member name="P:MudBlazor.Extensions.Components.MudExCodeView.CodeViewModeWithRenderFragment">
             <summary>
             Specify layout if render content and code ist displayed
+            </summary>
+        </member>
+        <member name="P:MudBlazor.Extensions.Components.MudExCodeView.CodeCopiedText">
+            <summary>
+            Text for code copied toast
             </summary>
         </member>
         <member name="P:MudBlazor.Extensions.Components.MudExCodeView.ExpandedText">
@@ -1720,6 +1735,11 @@
         </member>
         <member name="M:MudBlazor.Extensions.Components.MudExCodeView.OnAfterRenderAsync(System.Boolean)">
             <inheritdoc />
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExCodeView.OnCopyClick">
+            <summary>
+             Callback when the copy button is clicked
+            </summary>
         </member>
         <member name="M:MudBlazor.Extensions.Components.MudExCodeView.CodeAsMarkup(System.String,System.String)">
             <summary>
@@ -8763,6 +8783,20 @@
             Ensures all data is loaded for all files.
             </summary>
         </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExUploadEdit`1.Add(System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Components.Forms.IBrowserFile})">
+            <summary>
+            Adds all given files to the upload requests.
+            </summary>
+            <param name="files"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExUploadEdit`1.Add(Microsoft.AspNetCore.Components.Forms.IBrowserFile)">
+            <summary>
+            Adds a file to the upload requests.
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
         <member name="M:MudBlazor.Extensions.Components.MudExUploadEdit`1.OnAfterRenderAsync(System.Boolean)">
             <inheritdoc />
         </member>
@@ -8847,6 +8881,20 @@
             Used by Required parameter for form validation
             </summary>
             <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExUploadEdit`1.Add(System.String)">
+            <summary>
+            Adds a new request from the given URL.
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MudBlazor.Extensions.Components.MudExUploadEdit`1.Add(`0)">
+            <summary>
+            Adds a new request
+            </summary>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:MudBlazor.Extensions.Components.MudExUploadEdit`1.DropZoneClick(System.String)">
