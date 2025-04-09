@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Components.Rendering;
+﻿using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.AspNetCore.Components;
 using System.Reflection;
@@ -262,6 +261,8 @@ public partial class MudExCodeView
         var callbackMethodName = nameof(OnCopyClick);
         _copyCallbackIsAttached = await JsRuntime.DInvokeAsync<bool>((w, el, dotnet, methodName) =>
         {
+            if(!el || !el.querySelector)
+                return false;
             var btn = el.querySelector("button");
             if(!btn)
                 return false;
@@ -316,8 +317,11 @@ public partial class MudExCodeView
     /// </summary>
     public static string ReplaceLambdaInFuncString(string caller)
     {
-        caller = Regex.Replace(caller, @"^\s*\([^)]*\)\s*=>\s*{?", "", RegexOptions.Singleline);
+        //caller = Regex.Replace(caller, @"^\s*\([^)]*\)\s*=>\s*{?", "", RegexOptions.Singleline);
+        //caller = Regex.Replace(caller, @"\s*}\s*$", "", RegexOptions.Singleline);
+        caller = Regex.Replace(caller, @"^\s*(?:async\s+)?\([^)]*\)\s*=>\s*{?", "", RegexOptions.Singleline);
         caller = Regex.Replace(caller, @"\s*}\s*$", "", RegexOptions.Singleline);
+
         return caller;
     }
 
