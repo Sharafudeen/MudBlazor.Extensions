@@ -62,19 +62,10 @@
         this.dialog.style.visibility = 'visible';
     }
 
+
     maximize() {
-        if (this._oldStyle) {
-            this.dialog.style.cssText = this._oldStyle;
-            delete this._oldStyle;
-        } else {
-            this._oldStyle = this.dialog.style.cssText;
-            this.dialog.style.position = 'absolute';
-            this.dialog.style.left = "0";
-            this.dialog.style.top = "0";
-            this.dialog.style.maxWidth = this.dialog.style.width = window.innerWidth + 'px';
-            this.dialog.style.maxHeight = this.dialog.style.height = window.innerHeight + 'px';
-        }
-        this.getHandler(MudExDialogResizeHandler).checkResizeable();
+        var handler = this.getHandler(MudExDialogDragHandler);
+        handler.toggleSnap(MudExDialogDragHandler.Direction.TOP);
     }
     
     moveElementToMousePosition(element) {

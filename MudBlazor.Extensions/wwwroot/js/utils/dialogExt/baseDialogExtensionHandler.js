@@ -14,7 +14,7 @@
 
     order = 99;
 
-    async raiseDialogEvent(eventName) {        
+    async raiseDialogEvent(eventName) {
         // Get viewport dimensions
         var windowHeight = window.innerHeight || document.documentElement.clientHeight;
         var windowWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -33,6 +33,34 @@
         const rect = Object.assign(extendedRect, JSON.parse(JSON.stringify(this.dialog.getBoundingClientRect())));        
         if (this.dotNetService) {
             return await this.dotNetService.invokeMethodAsync('PublishEvent', eventName, this.dialog.id, this.dotNet, rect);
+        }
+    }
+
+    restoreSizeConstraintsIf() {
+        if (!this.options.keepMaxSizeConstraints && this._savedMaxConstraints) {
+            if (this._savedMaxConstraints?.maxWidth)
+                this.dialog.style.maxWidth = this._savedMaxConstraints.maxWidth;
+            else
+                this.dialog.style.removeProperty('max-width');
+
+            if (this._savedMaxConstraints?.maxHeight)
+                this.dialog.style.maxHeight = this._savedMaxConstraints.maxHeight;
+            else
+                this.dialog.style.removeProperty('max-height');
+            this._savedMaxConstraints = null;
+        }
+    }
+
+    removeSizeConstraintsIf() {
+        if (!this.options.keepMaxSizeConstraints) {
+            this._savedMaxConstraints = {
+                maxWidth: this.dialog.style.maxWidth,
+                maxHeight: this.dialog.style.maxHeight
+            };
+            //this.dialog.style.maxWidth = 'unset';
+            //this.dialog.style.maxHeight = 'unset';
+            this.dialog.style.maxWidth = 'none';
+            this.dialog.style.maxHeight = 'none';
         }
     }
 
