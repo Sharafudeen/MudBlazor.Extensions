@@ -389,6 +389,12 @@ MudBlazor.Extensions is released under the MIT License. See the bundled LICENSE 
 Latest Changes: 
 <!-- CHANGELOG:START -->
 <!-- Copied from CHANGELOG.md on 2024-09-23 15:35:55 -->
+ - 8.11.0 > MudExObject edit now supports grouping by tabs and accordions. See sample [here](https://www.mudex.org/mudex-object-edit-tabs)
+ - 8.11.0 > Small bug fixes
+ - 8.9.0 > Support touch events for dialog dragging
+ - 8.9.0 > Fixes bug with icon picker if no value is specified
+ - 8.9.0 > Fixes bug with custom size in non modal dialogs
+ - 8.9.0 > Update MudBlazor to 8.9.0 and other Packages to latest version 
  - 8.8.0 > Update MudBlazor to 8.8.0 and other Packages to latest version 
  - 8.8.0 > Fix Bug in MudExOneDriveFilePicker where the file couldnt be loaded when AutoLoadDataBytes is true
  - 8.7.0 > Update MudBlazor to 8.7.0
