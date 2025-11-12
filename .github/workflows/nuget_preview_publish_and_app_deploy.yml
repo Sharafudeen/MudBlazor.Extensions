@@ -10,7 +10,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: SampleApplication/publish
   AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.MudEx_016e }}
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 8.0.x
+  DOTNET_CORE_VERSION: 10.0.x
   WORKING_DIRECTORY: Samples/MainSample.WebAssembly
 
 jobs:
@@ -32,9 +32,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '8.0.x'
+      uses: actions/setup-dotnet@v4
+      with:        
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
 
     - name: Restore dependencies
       run: dotnet restore ./MudBlazor.Extensions/MudBlazor.Extensions.csproj
@@ -67,7 +67,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
     
